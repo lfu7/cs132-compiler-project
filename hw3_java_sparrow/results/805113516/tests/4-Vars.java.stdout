@@ -1,0 +1,47 @@
+func _Main()
+v2 = 4
+v3 = 8
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @A_helper
+[vmt_address4 + 4] = f5
+f6 = @A_run
+[vmt_address4 + 0] = f6
+vmt_address7 = [v1 + 0]
+f8 = [vmt_address7 + 0]
+v0 = call f8(v1)
+print(v0)
+      return v0
+
+func A_run(this)
+v1 = this
+vmt_address2 = [v1 + 0]
+f3 = [vmt_address2 + 4]
+v4 = 12
+v0 = call f3(v1 v4)
+a = v0
+v6 = this
+vmt_address7 = [v6 + 0]
+f8 = [vmt_address7 + 4]
+v9 = 15
+v5 = call f8(v6 v9)
+b = v5
+v11 = a
+v12 = b
+v10 = v11 + v12
+      return v10
+
+func A_helper(this param)
+v0 = param
+x = v0
+v2 = param
+v3 = 1
+v1 = v2 + v3
+param = v1
+v4 = x
+print(v4)
+v5 = x
+      return v5
+
+

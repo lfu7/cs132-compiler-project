@@ -1,0 +1,21 @@
+func _Main()
+v2 = 4
+v3 = 4
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @A_run
+[vmt_address4 + 0] = f5
+vmt_address6 = [v1 + 0]
+f7 = [vmt_address6 + 0]
+v0 = call f7(v1)
+print(v0)
+      return v0
+
+func A_run(this)
+v0 = 42
+print(v0)
+v1 = 99
+      return v1
+
+

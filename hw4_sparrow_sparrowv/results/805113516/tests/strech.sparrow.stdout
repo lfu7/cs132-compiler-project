@@ -1,0 +1,185 @@
+func Main()
+t0 = @f
+s11 = t0
+s10 = call s11()
+t1 = s10
+print(t1)
+v1 = t1
+      return v1
+
+func f()
+stack_save_variable_s3 = s3
+stack_save_variable_s4 = s4
+stack_save_variable_s5 = s5
+stack_save_variable_s6 = s6
+stack_save_variable_s7 = s7
+stack_save_variable_s1 = s1
+stack_save_variable_s2 = s2
+t0 = 10
+t1 = 20
+t2 = t0 + t1
+t3 = 30
+t4 = t0 < t3
+if0 t4 goto L8
+t4 = t0 + t2
+t5 = t0 + t1
+goto L10
+L8:
+s1 = t1 + t2
+goto L14
+L10:
+s2 = 50
+t1 = t4 + s2
+s3 = t2 + t4
+s4 = s3 + t5
+print(s4)
+s1 = t2 + t5
+s5 = 40
+t1 = t1 + s5
+goto L8
+L14:
+s2 = 10
+t5 = t0 + s2
+L22:
+t1 = 55
+s4 = 20
+t2 = t0 - s4
+s5 = t1 < t2
+if0 s5 goto L20
+t4 = t2 + t1
+s1 = t4 - s2
+s6 = t4 + s1
+print(s6)
+t1 = t2 + s1
+s7 = 2
+t5 = s7 - t1
+goto L22
+L20:
+t0 = 7
+t1 = t5 + t0
+t2 = t2 + t1
+s7 = 2
+s1 = s7 * t2
+t0 = t5 + s2
+s2 = 55
+s5 = s2
+s2 = @func_g
+t3 = t0 < s5
+if0 t3 goto L27
+t3 = t0 - s4
+s11 = s2
+h = s5
+i = t3
+a2 = t1
+a3 = t2
+a4 = t4
+a5 = s1
+a6 = t5
+a7 = t0
+g = t0
+c = t2
+i = t3
+d = t4
+s10 = call s11(h i)
+t0 = g
+t2 = c
+t3 = i
+t4 = d
+s5 = s10
+t1 = t3 + s5
+goto L29
+L27:
+t5 = 1
+s1 = t0 + t5
+t1 = s7 * s1
+L29:
+t5 = 5
+s2 = t1 - t5
+s1 = t0 + s2
+t5 = t1 - s1
+s5 = t5 + s2
+print(s5)
+t3 = t1 + s1
+t2 = t2 + t4
+t1 = t4 + s4
+t5 = t3 + t1
+s3 = t4 < t5
+L3:
+if0 s3 goto L12
+s2 = t4 + t1
+s4 = 30
+s5 = s2 + s4
+s5 = t3 - s5
+t5 = s2 - s5
+s6 = 0
+s3 = t5 * s6
+t1 = t2 + t0
+t5 = s2 + t5
+s7 = t1 - t5
+print(s7)
+goto L3
+L12:
+t0 = s1 - t5
+t0 = s2 + t0
+g = t0
+s3 = stack_save_variable_s3
+s4 = stack_save_variable_s4
+s5 = stack_save_variable_s5
+s6 = stack_save_variable_s6
+s7 = stack_save_variable_s7
+s1 = stack_save_variable_s1
+s2 = stack_save_variable_s2
+      return g
+
+func func_g(x7 x8)
+stack_save_variable_s1 = s1
+stack_save_variable_s2 = s2
+t0 = a2 + a3
+t1 = a4 + a5
+t2 = a6 + a7
+s10 = x7
+s11 = x8
+t3 = s10 + s11
+t4 = 10
+t5 = t4
+s10 = x8
+s1 = s10 < a2
+if0 s1 goto L42
+s2 = @func_g
+s11 = s2
+x2 = a3
+x5 = a6
+ten = t4
+a2 = s1
+a3 = x7
+a4 = s1
+a5 = x5
+a6 = t4
+a7 = s1
+a = t0
+b = t1
+c = t2
+d = t3
+e = t5
+s10 = call s11(x2 ten)
+a3 = x2
+a6 = x5
+t0 = a
+t1 = b
+t2 = c
+t3 = d
+t5 = e
+t0 = s10
+L42:
+t5 = t3 - t0
+t0 = t1 * t5
+t1 = t2 - t0
+t2 = t3 + t5
+t3 = t5 + t0
+t0 = t1 + t2
+j = t0
+s1 = stack_save_variable_s1
+s2 = stack_save_variable_s2
+      return j
+
+

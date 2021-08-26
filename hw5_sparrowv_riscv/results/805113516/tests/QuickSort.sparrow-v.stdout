@@ -1,0 +1,2152 @@
+.equiv @sbrk, 9
+.equiv @print_string, 4
+.equiv @print_char, 11
+.equiv @print_int, 1
+.equiv @exit 10
+.equiv @exit2, 17
+
+.text
+jal _Main
+li a0, @exit
+ecall
+
+.globl _Main
+_Main:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 12
+sub sp, sp, t6
+sw ra, -4(fp)
+li t0, 20
+li t1, 16
+mv a0, t0
+jal alloc
+mv t2, a0
+mv a0, t1
+jal alloc
+mv t0, a0
+sw t0, 0(t2)
+la t1, QS_Start
+sw t1, 0(t0)
+la t1, QS_Sort
+sw t1, 4(t0)
+la t1, QS_Print
+sw t1, 8(t0)
+la t1, QS_Init
+sw t1, 12(t0)
+lw t0, 0(t2)
+lw t1, 0(t0)
+li t0, 10
+mv s11, t1
+mv a2, t2
+mv a3, t0
+jalr s11
+mv s10, a0
+mv t3, s10
+mv a1, t3
+li a0, @print_int
+ecall
+li a1, 10
+li a0, 11
+ecall
+sw t3, -12(fp)
+lw a0, -12(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 12
+jr ra
+
+.globl QS_Start
+QS_Start:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 20
+sub sp, sp, t6
+sw ra, -4(fp)
+mv t0, a2
+lw t1, 0(t0)
+lw t2, 12(t1)
+mv t1, a3
+mv s11, t2
+sw a2, -12(fp)
+mv a2, t0
+mv a3, t1
+jalr s11
+mv s10, a0
+lw a2, -12(fp)
+mv t3, s10
+mv t0, t3
+mv t1, a2
+lw t2, 0(t1)
+lw t3, 8(t2)
+mv s11, t3
+sw a2, -12(fp)
+mv a2, t1
+sw t0, -16(fp)
+jalr s11
+mv s10, a0
+lw a2, -12(fp)
+lw t0, -16(fp)
+mv t2, s10
+mv t0, t2
+li t1, 9999
+mv a1, t1
+li a0, @print_int
+ecall
+li a1, 10
+li a0, 11
+ecall
+li t1, 8
+li t2, 4
+add t1, t1, t2
+add t3, a2, t1
+mv t1, t3
+add t1, t1, t2
+lw t2, 0(t1)
+bne t2, zero ,QS_Start_end_0
+j QS_Start_null_error17
+QS_Start_end_0:
+j QS_Start_no_null_error18
+QS_Start_null_error17:
+la a0, msg_0
+j error
+QS_Start_no_null_error18:
+lw t1, 0(t3)
+li t2, 1
+sub t3, t1, t2
+mv t0, t3
+mv t1, a2
+lw t2, 0(t1)
+lw t3, 4(t2)
+li t2, 0
+li t4, 1
+bne t4, zero ,QS_Start_end_1
+j QS_Start_null_error27
+QS_Start_end_1:
+j QS_Start_no_null_error28
+QS_Start_null_error27:
+la a0, msg_0
+j error
+QS_Start_no_null_error28:
+mv t4, t0
+mv s11, t3
+sw a2, -12(fp)
+mv a2, t1
+mv a3, t2
+mv a4, t4
+jalr s11
+mv s10, a0
+lw a2, -12(fp)
+mv t0, s10
+mv t1, t0
+mv t0, a2
+lw t1, 0(t0)
+lw t2, 8(t1)
+mv s11, t2
+mv a2, t0
+jalr s11
+mv s10, a0
+mv t1, s10
+mv t0, t1
+li t0, 0
+sw t0, -20(fp)
+lw a0, -20(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 20
+jr ra
+
+.globl QS_Sort
+QS_Sort:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 588
+sub sp, sp, t6
+sw ra, -4(fp)
+sw s3, -12(fp)
+sw s4, -16(fp)
+sw s5, -20(fp)
+sw s6, -24(fp)
+sw s7, -28(fp)
+sw s8, -32(fp)
+sw s9, -36(fp)
+sw s1, -40(fp)
+sw s2, -44(fp)
+li t0, 0
+mv t1, t0
+mv t0, a3
+mv t2, a4
+slt t3, t0, t2
+bne t3, zero ,QS_Sort_end_2
+j QS_Sort_if_else_4
+QS_Sort_end_2:
+li t0, 0
+li t2, 4
+add t0, t0, t2
+add t3, a2, t0
+mv t0, t3
+add t0, t0, t2
+lw t2, 0(t0)
+bne t2, zero ,QS_Sort_end_3
+j QS_Sort_null_error12
+QS_Sort_end_3:
+j QS_Sort_no_null_error13
+QS_Sort_null_error12:
+la a0, msg_0
+j error
+QS_Sort_no_null_error13:
+lw t0, 0(t3)
+mv t2, a4
+li t3, 0
+li t4, 1
+sub t3, t3, t4
+slt t4, t3, t2
+bne t4, zero ,QS_Sort_end_4
+j QS_Sort_if_else18
+QS_Sort_end_4:
+j QS_Sort_if_end19
+QS_Sort_if_else18:
+la a0, msg_1
+j error
+QS_Sort_if_end19:
+lw t3, 0(t0)
+slt t4, t2, t3
+bne t4, zero ,QS_Sort_end_5
+j QS_Sort_if_else22
+QS_Sort_end_5:
+j QS_Sort_if_end23
+QS_Sort_if_else22:
+la a0, msg_1
+j error
+QS_Sort_if_end23:
+li t3, 4
+mul t4, t2, t3
+add t4, t4, t3
+add t2, t0, t4
+lw t0, 0(t2)
+mv t2, t0
+mv t0, a3
+li t3, 1
+sub t4, t0, t3
+mv t0, t4
+mv t3, a4
+mv t4, t3
+li t3, 1
+mv t5, t3
+QS_Sort_while32:
+li t3, 1
+bne t3, zero ,QS_Sort_end_6
+j QS_Sort_null_error35
+QS_Sort_end_6:
+j QS_Sort_no_null_error36
+QS_Sort_null_error35:
+la a0, msg_0
+j error
+QS_Sort_no_null_error36:
+mv s1, t5
+bne s1, zero ,QS_Sort_end_7
+j QS_Sort_break_while_37
+QS_Sort_end_7:
+li s2, 1
+mv s3, s2
+QS_Sort_while39:
+li s4, 1
+bne s4, zero ,QS_Sort_end_8
+j QS_Sort_null_error42
+QS_Sort_end_8:
+j QS_Sort_no_null_error43
+QS_Sort_null_error42:
+la a0, msg_0
+j error
+QS_Sort_no_null_error43:
+mv s5, s3
+bne s5, zero ,QS_Sort_end_9
+j QS_Sort_break_while_44
+QS_Sort_end_9:
+li s6, 1
+bne s6, zero ,QS_Sort_end_10
+j QS_Sort_null_error48
+QS_Sort_end_10:
+j QS_Sort_no_null_error49
+QS_Sort_null_error48:
+la a0, msg_0
+j error
+QS_Sort_no_null_error49:
+mv s7, t0
+li s8, 1
+add s9, s7, s8
+mv t0, s9
+li a5, 0
+li a6, 4
+add a5, a5, a6
+add a7, a2, a5
+mv s10, a7
+sw s10, -48(fp)
+lw s10, -48(fp)
+add s10, s10, a6
+sw s10, -48(fp)
+lw s11, -48(fp)
+lw s10, 0(s11)
+sw s10, -52(fp)
+lw s10, -52(fp)
+bne s10, zero ,QS_Sort_end_11
+j QS_Sort_null_error58
+QS_Sort_end_11:
+j QS_Sort_no_null_error59
+QS_Sort_null_error58:
+la a0, msg_0
+j error
+QS_Sort_no_null_error59:
+lw s10, 0(a7)
+sw s10, -56(fp)
+li s10, 1
+sw s10, -60(fp)
+lw s10, -60(fp)
+bne s10, zero ,QS_Sort_end_12
+j QS_Sort_null_error62
+QS_Sort_end_12:
+j QS_Sort_no_null_error63
+QS_Sort_null_error62:
+la a0, msg_0
+j error
+QS_Sort_no_null_error63:
+mv s10, t0
+sw s10, -64(fp)
+li s10, 0
+sw s10, -68(fp)
+li s10, 1
+sw s10, -72(fp)
+lw s10, -68(fp)
+lw s11, -72(fp)
+sub s10, s10, s11
+sw s10, -68(fp)
+lw s10, -68(fp)
+lw s11, -64(fp)
+slt s10, s10, s11
+sw s10, -76(fp)
+lw s10, -76(fp)
+bne s10, zero ,QS_Sort_end_13
+j QS_Sort_if_else67
+QS_Sort_end_13:
+j QS_Sort_if_end68
+QS_Sort_if_else67:
+la a0, msg_1
+j error
+QS_Sort_if_end68:
+lw s11, -56(fp)
+lw s10, 0(s11)
+sw s10, -80(fp)
+lw s10, -64(fp)
+lw s11, -80(fp)
+slt s10, s10, s11
+sw s10, -84(fp)
+lw s10, -84(fp)
+bne s10, zero ,QS_Sort_end_14
+j QS_Sort_if_else71
+QS_Sort_end_14:
+j QS_Sort_if_end72
+QS_Sort_if_else71:
+la a0, msg_1
+j error
+QS_Sort_if_end72:
+li s10, 4
+sw s10, -88(fp)
+lw s10, -64(fp)
+lw s11, -88(fp)
+mul s10, s10, s11
+sw s10, -92(fp)
+lw s10, -92(fp)
+lw s11, -88(fp)
+add s10, s10, s11
+sw s10, -92(fp)
+lw s10, -56(fp)
+lw s11, -92(fp)
+add s10, s10, s11
+sw s10, -96(fp)
+lw s11, -96(fp)
+lw s10, 0(s11)
+sw s10, -100(fp)
+lw s11, -100(fp)
+mv s10, s11
+sw s10, -104(fp)
+li s10, 1
+sw s10, -108(fp)
+lw s10, -108(fp)
+bne s10, zero ,QS_Sort_end_15
+j QS_Sort_null_error80
+QS_Sort_end_15:
+j QS_Sort_no_null_error81
+QS_Sort_null_error80:
+la a0, msg_0
+j error
+QS_Sort_no_null_error81:
+lw s11, -104(fp)
+mv s10, s11
+sw s10, -112(fp)
+li s10, 1
+sw s10, -116(fp)
+lw s10, -116(fp)
+bne s10, zero ,QS_Sort_end_16
+j QS_Sort_null_error84
+QS_Sort_end_16:
+j QS_Sort_no_null_error85
+QS_Sort_null_error84:
+la a0, msg_0
+j error
+QS_Sort_no_null_error85:
+mv s10, t2
+sw s10, -120(fp)
+lw s10, -112(fp)
+lw s11, -120(fp)
+slt s10, s10, s11
+sw s10, -124(fp)
+lw s10, -124(fp)
+bne s10, zero ,QS_Sort_end_17
+j QS_Sort_if_else_86
+QS_Sort_end_17:
+li s10, 0
+sw s10, -128(fp)
+j QS_Sort_if_end_87
+QS_Sort_if_else_86:
+li s10, 1
+sw s10, -128(fp)
+QS_Sort_if_end_87:
+lw s10, -128(fp)
+bne s10, zero ,QS_Sort_end_18
+j QS_Sort_if_else_88
+QS_Sort_end_18:
+li s10, 0
+sw s10, -132(fp)
+lw s11, -132(fp)
+mv s3, s11
+j QS_Sort_if_end_90
+QS_Sort_if_else_88:
+li s10, 1
+sw s10, -136(fp)
+lw s11, -136(fp)
+mv s3, s11
+QS_Sort_if_end_90:
+j QS_Sort_while39
+QS_Sort_break_while_44:
+li s10, 1
+sw s10, -140(fp)
+lw s11, -140(fp)
+mv s3, s11
+QS_Sort_while93:
+li s10, 1
+sw s10, -144(fp)
+lw s10, -144(fp)
+bne s10, zero ,QS_Sort_end_19
+j QS_Sort_null_error96
+QS_Sort_end_19:
+j QS_Sort_no_null_error97
+QS_Sort_null_error96:
+la a0, msg_0
+j error
+QS_Sort_no_null_error97:
+mv s10, s3
+sw s10, -148(fp)
+lw s10, -148(fp)
+bne s10, zero ,QS_Sort_end_20
+j QS_Sort_break_while_98
+QS_Sort_end_20:
+li s10, 1
+sw s10, -152(fp)
+lw s10, -152(fp)
+bne s10, zero ,QS_Sort_end_21
+j QS_Sort_null_error102
+QS_Sort_end_21:
+j QS_Sort_no_null_error103
+QS_Sort_null_error102:
+la a0, msg_0
+j error
+QS_Sort_no_null_error103:
+mv s10, t4
+sw s10, -156(fp)
+li s10, 1
+sw s10, -160(fp)
+lw s10, -156(fp)
+lw s11, -160(fp)
+sub s10, s10, s11
+sw s10, -164(fp)
+lw s11, -164(fp)
+mv t4, s11
+li s10, 0
+sw s10, -168(fp)
+li s10, 4
+sw s10, -172(fp)
+lw s10, -168(fp)
+lw s11, -172(fp)
+add s10, s10, s11
+sw s10, -168(fp)
+lw s11, -168(fp)
+add s10, a2, s11
+sw s10, -176(fp)
+lw s11, -176(fp)
+mv s10, s11
+sw s10, -180(fp)
+lw s10, -180(fp)
+lw s11, -172(fp)
+add s10, s10, s11
+sw s10, -180(fp)
+lw s11, -180(fp)
+lw s10, 0(s11)
+sw s10, -184(fp)
+lw s10, -184(fp)
+bne s10, zero ,QS_Sort_end_22
+j QS_Sort_null_error112
+QS_Sort_end_22:
+j QS_Sort_no_null_error113
+QS_Sort_null_error112:
+la a0, msg_0
+j error
+QS_Sort_no_null_error113:
+lw s11, -176(fp)
+lw s10, 0(s11)
+sw s10, -188(fp)
+li s10, 1
+sw s10, -192(fp)
+lw s10, -192(fp)
+bne s10, zero ,QS_Sort_end_23
+j QS_Sort_null_error116
+QS_Sort_end_23:
+j QS_Sort_no_null_error117
+QS_Sort_null_error116:
+la a0, msg_0
+j error
+QS_Sort_no_null_error117:
+mv s10, t4
+sw s10, -196(fp)
+li s10, 0
+sw s10, -200(fp)
+li s10, 1
+sw s10, -204(fp)
+lw s10, -200(fp)
+lw s11, -204(fp)
+sub s10, s10, s11
+sw s10, -200(fp)
+lw s10, -200(fp)
+lw s11, -196(fp)
+slt s10, s10, s11
+sw s10, -208(fp)
+lw s10, -208(fp)
+bne s10, zero ,QS_Sort_end_24
+j QS_Sort_if_else121
+QS_Sort_end_24:
+j QS_Sort_if_end122
+QS_Sort_if_else121:
+la a0, msg_1
+j error
+QS_Sort_if_end122:
+lw s11, -188(fp)
+lw s10, 0(s11)
+sw s10, -212(fp)
+lw s10, -196(fp)
+lw s11, -212(fp)
+slt s10, s10, s11
+sw s10, -216(fp)
+lw s10, -216(fp)
+bne s10, zero ,QS_Sort_end_25
+j QS_Sort_if_else125
+QS_Sort_end_25:
+j QS_Sort_if_end126
+QS_Sort_if_else125:
+la a0, msg_1
+j error
+QS_Sort_if_end126:
+li s10, 4
+sw s10, -220(fp)
+lw s10, -196(fp)
+lw s11, -220(fp)
+mul s10, s10, s11
+sw s10, -224(fp)
+lw s10, -224(fp)
+lw s11, -220(fp)
+add s10, s10, s11
+sw s10, -224(fp)
+lw s10, -188(fp)
+lw s11, -224(fp)
+add s10, s10, s11
+sw s10, -228(fp)
+lw s11, -228(fp)
+lw s10, 0(s11)
+sw s10, -232(fp)
+lw s11, -232(fp)
+mv s10, s11
+sw s10, -104(fp)
+li s10, 1
+sw s10, -236(fp)
+lw s10, -236(fp)
+bne s10, zero ,QS_Sort_end_26
+j QS_Sort_null_error134
+QS_Sort_end_26:
+j QS_Sort_no_null_error135
+QS_Sort_null_error134:
+la a0, msg_0
+j error
+QS_Sort_no_null_error135:
+mv s10, t2
+sw s10, -240(fp)
+li s10, 1
+sw s10, -244(fp)
+lw s10, -244(fp)
+bne s10, zero ,QS_Sort_end_27
+j QS_Sort_null_error138
+QS_Sort_end_27:
+j QS_Sort_no_null_error139
+QS_Sort_null_error138:
+la a0, msg_0
+j error
+QS_Sort_no_null_error139:
+lw s11, -104(fp)
+mv s10, s11
+sw s10, -248(fp)
+lw s10, -240(fp)
+lw s11, -248(fp)
+slt s10, s10, s11
+sw s10, -252(fp)
+lw s10, -252(fp)
+bne s10, zero ,QS_Sort_end_28
+j QS_Sort_if_else_140
+QS_Sort_end_28:
+li s10, 0
+sw s10, -256(fp)
+j QS_Sort_if_end_141
+QS_Sort_if_else_140:
+li s10, 1
+sw s10, -256(fp)
+QS_Sort_if_end_141:
+lw s10, -256(fp)
+bne s10, zero ,QS_Sort_end_29
+j QS_Sort_if_else_142
+QS_Sort_end_29:
+li s10, 0
+sw s10, -260(fp)
+lw s11, -260(fp)
+mv s3, s11
+j QS_Sort_if_end_144
+QS_Sort_if_else_142:
+li s10, 1
+sw s10, -264(fp)
+lw s11, -264(fp)
+mv s3, s11
+QS_Sort_if_end_144:
+j QS_Sort_while93
+QS_Sort_break_while_98:
+li s10, 0
+sw s10, -268(fp)
+li s10, 4
+sw s10, -272(fp)
+lw s10, -268(fp)
+lw s11, -272(fp)
+add s10, s10, s11
+sw s10, -268(fp)
+lw s11, -268(fp)
+add s10, a2, s11
+sw s10, -276(fp)
+lw s11, -276(fp)
+mv s10, s11
+sw s10, -280(fp)
+lw s10, -280(fp)
+lw s11, -272(fp)
+add s10, s10, s11
+sw s10, -280(fp)
+lw s11, -280(fp)
+lw s10, 0(s11)
+sw s10, -284(fp)
+lw s10, -284(fp)
+bne s10, zero ,QS_Sort_end_30
+j QS_Sort_null_error153
+QS_Sort_end_30:
+j QS_Sort_no_null_error154
+QS_Sort_null_error153:
+la a0, msg_0
+j error
+QS_Sort_no_null_error154:
+lw s11, -276(fp)
+lw s10, 0(s11)
+sw s10, -288(fp)
+li s10, 1
+sw s10, -292(fp)
+lw s10, -292(fp)
+bne s10, zero ,QS_Sort_end_31
+j QS_Sort_null_error157
+QS_Sort_end_31:
+j QS_Sort_no_null_error158
+QS_Sort_null_error157:
+la a0, msg_0
+j error
+QS_Sort_no_null_error158:
+mv s10, t0
+sw s10, -296(fp)
+li s10, 0
+sw s10, -300(fp)
+li s10, 1
+sw s10, -304(fp)
+lw s10, -300(fp)
+lw s11, -304(fp)
+sub s10, s10, s11
+sw s10, -300(fp)
+lw s10, -300(fp)
+lw s11, -296(fp)
+slt s10, s10, s11
+sw s10, -308(fp)
+lw s10, -308(fp)
+bne s10, zero ,QS_Sort_end_32
+j QS_Sort_if_else162
+QS_Sort_end_32:
+j QS_Sort_if_end163
+QS_Sort_if_else162:
+la a0, msg_1
+j error
+QS_Sort_if_end163:
+lw s11, -288(fp)
+lw s10, 0(s11)
+sw s10, -312(fp)
+lw s10, -296(fp)
+lw s11, -312(fp)
+slt s10, s10, s11
+sw s10, -316(fp)
+lw s10, -316(fp)
+bne s10, zero ,QS_Sort_end_33
+j QS_Sort_if_else166
+QS_Sort_end_33:
+j QS_Sort_if_end167
+QS_Sort_if_else166:
+la a0, msg_1
+j error
+QS_Sort_if_end167:
+li s10, 4
+sw s10, -320(fp)
+lw s10, -296(fp)
+lw s11, -320(fp)
+mul s10, s10, s11
+sw s10, -324(fp)
+lw s10, -324(fp)
+lw s11, -320(fp)
+add s10, s10, s11
+sw s10, -324(fp)
+lw s10, -288(fp)
+lw s11, -324(fp)
+add s10, s10, s11
+sw s10, -328(fp)
+lw s11, -328(fp)
+lw s10, 0(s11)
+sw s10, -332(fp)
+lw s11, -332(fp)
+mv t1, s11
+li s10, 0
+sw s10, -336(fp)
+li s10, 4
+sw s10, -340(fp)
+lw s10, -336(fp)
+lw s11, -340(fp)
+add s10, s10, s11
+sw s10, -336(fp)
+lw s11, -336(fp)
+add s10, a2, s11
+sw s10, -344(fp)
+li s10, 1
+sw s10, -348(fp)
+lw s11, -344(fp)
+mv s10, s11
+sw s10, -352(fp)
+lw s10, -352(fp)
+lw s11, -340(fp)
+add s10, s10, s11
+sw s10, -352(fp)
+lw s10, -352(fp)
+lw s11, -348(fp)
+sw s11, 0(s10)
+lw s11, -344(fp)
+lw s10, 0(s11)
+sw s10, -356(fp)
+lw s10, -356(fp)
+bne s10, zero ,QS_Sort_end_34
+j QS_Sort_null_error177
+QS_Sort_end_34:
+j QS_Sort_no_null_error178
+QS_Sort_null_error177:
+la a0, msg_0
+j error
+QS_Sort_no_null_error178:
+li s10, 1
+sw s10, -360(fp)
+lw s10, -360(fp)
+bne s10, zero ,QS_Sort_end_35
+j QS_Sort_null_error181
+QS_Sort_end_35:
+j QS_Sort_no_null_error182
+QS_Sort_null_error181:
+la a0, msg_0
+j error
+QS_Sort_no_null_error182:
+mv s10, t0
+sw s10, -364(fp)
+li s10, 0
+sw s10, -368(fp)
+li s10, 1
+sw s10, -372(fp)
+lw s10, -368(fp)
+lw s11, -372(fp)
+sub s10, s10, s11
+sw s10, -368(fp)
+lw s10, -368(fp)
+lw s11, -364(fp)
+slt s10, s10, s11
+sw s10, -376(fp)
+lw s10, -376(fp)
+bne s10, zero ,QS_Sort_end_36
+j QS_Sort_if_else186
+QS_Sort_end_36:
+j QS_Sort_if_end187
+QS_Sort_if_else186:
+la a0, msg_1
+j error
+QS_Sort_if_end187:
+lw s11, -356(fp)
+lw s10, 0(s11)
+sw s10, -380(fp)
+lw s10, -364(fp)
+lw s11, -380(fp)
+slt s10, s10, s11
+sw s10, -384(fp)
+lw s10, -384(fp)
+bne s10, zero ,QS_Sort_end_37
+j QS_Sort_if_else190
+QS_Sort_end_37:
+j QS_Sort_if_end191
+QS_Sort_if_else190:
+la a0, msg_1
+j error
+QS_Sort_if_end191:
+li s10, 4
+sw s10, -388(fp)
+lw s10, -364(fp)
+lw s11, -388(fp)
+mul s10, s10, s11
+sw s10, -392(fp)
+lw s10, -392(fp)
+lw s11, -388(fp)
+add s10, s10, s11
+sw s10, -392(fp)
+lw s10, -356(fp)
+lw s11, -392(fp)
+add s10, s10, s11
+sw s10, -396(fp)
+li s10, 0
+sw s10, -400(fp)
+li s10, 4
+sw s10, -404(fp)
+lw s10, -400(fp)
+lw s11, -404(fp)
+add s10, s10, s11
+sw s10, -400(fp)
+lw s11, -400(fp)
+add s10, a2, s11
+sw s10, -408(fp)
+lw s11, -408(fp)
+mv s10, s11
+sw s10, -412(fp)
+lw s10, -412(fp)
+lw s11, -404(fp)
+add s10, s10, s11
+sw s10, -412(fp)
+lw s11, -412(fp)
+lw s10, 0(s11)
+sw s10, -416(fp)
+lw s10, -416(fp)
+bne s10, zero ,QS_Sort_end_38
+j QS_Sort_null_error202
+QS_Sort_end_38:
+j QS_Sort_no_null_error203
+QS_Sort_null_error202:
+la a0, msg_0
+j error
+QS_Sort_no_null_error203:
+lw s11, -408(fp)
+lw s10, 0(s11)
+sw s10, -420(fp)
+li s10, 1
+sw s10, -424(fp)
+lw s10, -424(fp)
+bne s10, zero ,QS_Sort_end_39
+j QS_Sort_null_error206
+QS_Sort_end_39:
+j QS_Sort_no_null_error207
+QS_Sort_null_error206:
+la a0, msg_0
+j error
+QS_Sort_no_null_error207:
+mv s10, t4
+sw s10, -428(fp)
+li s10, 0
+sw s10, -432(fp)
+li s10, 1
+sw s10, -436(fp)
+lw s10, -432(fp)
+lw s11, -436(fp)
+sub s10, s10, s11
+sw s10, -432(fp)
+lw s10, -432(fp)
+lw s11, -428(fp)
+slt s10, s10, s11
+sw s10, -440(fp)
+lw s10, -440(fp)
+bne s10, zero ,QS_Sort_end_40
+j QS_Sort_if_else211
+QS_Sort_end_40:
+j QS_Sort_if_end212
+QS_Sort_if_else211:
+la a0, msg_1
+j error
+QS_Sort_if_end212:
+lw s11, -420(fp)
+lw s10, 0(s11)
+sw s10, -444(fp)
+lw s10, -428(fp)
+lw s11, -444(fp)
+slt s10, s10, s11
+sw s10, -448(fp)
+lw s10, -448(fp)
+bne s10, zero ,QS_Sort_end_41
+j QS_Sort_if_else215
+QS_Sort_end_41:
+j QS_Sort_if_end216
+QS_Sort_if_else215:
+la a0, msg_1
+j error
+QS_Sort_if_end216:
+li s10, 4
+sw s10, -452(fp)
+lw s10, -428(fp)
+lw s11, -452(fp)
+mul s10, s10, s11
+sw s10, -456(fp)
+lw s10, -456(fp)
+lw s11, -452(fp)
+add s10, s10, s11
+sw s10, -456(fp)
+lw s10, -420(fp)
+lw s11, -456(fp)
+add s10, s10, s11
+sw s10, -460(fp)
+lw s11, -460(fp)
+lw s10, 0(s11)
+sw s10, -464(fp)
+lw s10, -396(fp)
+lw s11, -464(fp)
+sw s11, 0(s10)
+li s10, 0
+sw s10, -468(fp)
+li s10, 4
+sw s10, -472(fp)
+lw s10, -468(fp)
+lw s11, -472(fp)
+add s10, s10, s11
+sw s10, -468(fp)
+lw s11, -468(fp)
+add s10, a2, s11
+sw s10, -476(fp)
+li s10, 1
+sw s10, -480(fp)
+lw s11, -476(fp)
+mv s10, s11
+sw s10, -484(fp)
+lw s10, -484(fp)
+lw s11, -472(fp)
+add s10, s10, s11
+sw s10, -484(fp)
+lw s10, -484(fp)
+lw s11, -480(fp)
+sw s11, 0(s10)
+lw s11, -476(fp)
+lw s10, 0(s11)
+sw s10, -488(fp)
+lw s10, -488(fp)
+bne s10, zero ,QS_Sort_end_42
+j QS_Sort_null_error226
+QS_Sort_end_42:
+j QS_Sort_no_null_error227
+QS_Sort_null_error226:
+la a0, msg_0
+j error
+QS_Sort_no_null_error227:
+li s10, 1
+sw s10, -492(fp)
+lw s10, -492(fp)
+bne s10, zero ,QS_Sort_end_43
+j QS_Sort_null_error230
+QS_Sort_end_43:
+j QS_Sort_no_null_error231
+QS_Sort_null_error230:
+la a0, msg_0
+j error
+QS_Sort_no_null_error231:
+mv s10, t4
+sw s10, -496(fp)
+li s10, 0
+sw s10, -500(fp)
+li s10, 1
+sw s10, -504(fp)
+lw s10, -500(fp)
+lw s11, -504(fp)
+sub s10, s10, s11
+sw s10, -500(fp)
+lw s10, -500(fp)
+lw s11, -496(fp)
+slt s10, s10, s11
+sw s10, -508(fp)
+lw s10, -508(fp)
+bne s10, zero ,QS_Sort_end_44
+j QS_Sort_if_else235
+QS_Sort_end_44:
+j QS_Sort_if_end236
+QS_Sort_if_else235:
+la a0, msg_1
+j error
+QS_Sort_if_end236:
+lw s11, -488(fp)
+lw s10, 0(s11)
+sw s10, -512(fp)
+lw s10, -496(fp)
+lw s11, -512(fp)
+slt s10, s10, s11
+sw s10, -516(fp)
+lw s10, -516(fp)
+bne s10, zero ,QS_Sort_end_45
+j QS_Sort_if_else239
+QS_Sort_end_45:
+j QS_Sort_if_end240
+QS_Sort_if_else239:
+la a0, msg_1
+j error
+QS_Sort_if_end240:
+li s10, 4
+sw s10, -520(fp)
+lw s10, -496(fp)
+lw s11, -520(fp)
+mul s10, s10, s11
+sw s10, -524(fp)
+lw s10, -524(fp)
+lw s11, -520(fp)
+add s10, s10, s11
+sw s10, -524(fp)
+lw s10, -488(fp)
+lw s11, -524(fp)
+add s10, s10, s11
+sw s10, -528(fp)
+li s10, 1
+sw s10, -532(fp)
+lw s10, -532(fp)
+bne s10, zero ,QS_Sort_end_46
+j QS_Sort_null_error246
+QS_Sort_end_46:
+j QS_Sort_no_null_error247
+QS_Sort_null_error246:
+la a0, msg_0
+j error
+QS_Sort_no_null_error247:
+mv s10, t1
+sw s10, -536(fp)
+lw s10, -528(fp)
+lw s11, -536(fp)
+sw s11, 0(s10)
+li s10, 1
+sw s10, -540(fp)
+lw s10, -540(fp)
+bne s10, zero ,QS_Sort_end_47
+j QS_Sort_null_error251
+QS_Sort_end_47:
+j QS_Sort_no_null_error252
+QS_Sort_null_error251:
+la a0, msg_0
+j error
+QS_Sort_no_null_error252:
+mv s10, t4
+sw s10, -544(fp)
+li s10, 1
+sw s10, -548(fp)
+lw s10, -548(fp)
+bne s10, zero ,QS_Sort_end_48
+j QS_Sort_null_error256
+QS_Sort_end_48:
+j QS_Sort_no_null_error257
+QS_Sort_null_error256:
+la a0, msg_0
+j error
+QS_Sort_no_null_error257:
+mv s10, t0
+sw s10, -552(fp)
+li s10, 1
+sw s10, -556(fp)
+lw s10, -552(fp)
+lw s11, -556(fp)
+add s10, s10, s11
+sw s10, -560(fp)
+lw s10, -544(fp)
+lw s11, -560(fp)
+slt s10, s10, s11
+sw s10, -564(fp)
+lw s10, -564(fp)
+bne s10, zero ,QS_Sort_end_49
+j QS_Sort_if_else_259
+QS_Sort_end_49:
+li s10, 0
+sw s10, -568(fp)
+lw s11, -568(fp)
+mv t5, s11
+j QS_Sort_if_end_261
+QS_Sort_if_else_259:
+li s10, 1
+sw s10, -572(fp)
+lw s11, -572(fp)
+mv t5, s11
+QS_Sort_if_end_261:
+j QS_Sort_while32
+QS_Sort_break_while_37:
+li t2, 0
+li t3, 4
+add t2, t2, t3
+add t5, a2, t2
+li t2, 1
+mv s1, t5
+add s1, s1, t3
+sw t2, 0(s1)
+lw t2, 0(t5)
+bne t2, zero ,QS_Sort_end_50
+j QS_Sort_null_error269
+QS_Sort_end_50:
+j QS_Sort_no_null_error270
+QS_Sort_null_error269:
+la a0, msg_0
+j error
+QS_Sort_no_null_error270:
+li t3, 1
+bne t3, zero ,QS_Sort_end_51
+j QS_Sort_null_error273
+QS_Sort_end_51:
+j QS_Sort_no_null_error274
+QS_Sort_null_error273:
+la a0, msg_0
+j error
+QS_Sort_no_null_error274:
+mv t3, t4
+li t4, 0
+li t5, 1
+sub t4, t4, t5
+slt t5, t4, t3
+bne t5, zero ,QS_Sort_end_52
+j QS_Sort_if_else278
+QS_Sort_end_52:
+j QS_Sort_if_end279
+QS_Sort_if_else278:
+la a0, msg_1
+j error
+QS_Sort_if_end279:
+lw t4, 0(t2)
+slt t5, t3, t4
+bne t5, zero ,QS_Sort_end_53
+j QS_Sort_if_else282
+QS_Sort_end_53:
+j QS_Sort_if_end283
+QS_Sort_if_else282:
+la a0, msg_1
+j error
+QS_Sort_if_end283:
+li t4, 4
+mul t5, t3, t4
+add t5, t5, t4
+add t3, t2, t5
+li t2, 0
+li t4, 4
+add t2, t2, t4
+add t5, a2, t2
+mv t2, t5
+add t2, t2, t4
+lw t4, 0(t2)
+bne t4, zero ,QS_Sort_end_54
+j QS_Sort_null_error294
+QS_Sort_end_54:
+j QS_Sort_no_null_error295
+QS_Sort_null_error294:
+la a0, msg_0
+j error
+QS_Sort_no_null_error295:
+lw t2, 0(t5)
+li t4, 1
+bne t4, zero ,QS_Sort_end_55
+j QS_Sort_null_error298
+QS_Sort_end_55:
+j QS_Sort_no_null_error299
+QS_Sort_null_error298:
+la a0, msg_0
+j error
+QS_Sort_no_null_error299:
+mv t4, t0
+li t5, 0
+li s1, 1
+sub t5, t5, s1
+slt s1, t5, t4
+bne s1, zero ,QS_Sort_end_56
+j QS_Sort_if_else303
+QS_Sort_end_56:
+j QS_Sort_if_end304
+QS_Sort_if_else303:
+la a0, msg_1
+j error
+QS_Sort_if_end304:
+lw t5, 0(t2)
+slt s1, t4, t5
+bne s1, zero ,QS_Sort_end_57
+j QS_Sort_if_else307
+QS_Sort_end_57:
+j QS_Sort_if_end308
+QS_Sort_if_else307:
+la a0, msg_1
+j error
+QS_Sort_if_end308:
+li t5, 4
+mul s1, t4, t5
+add s1, s1, t5
+add t4, t2, s1
+lw t2, 0(t4)
+sw t2, 0(t3)
+li t2, 0
+li t3, 4
+add t2, t2, t3
+add t4, a2, t2
+li t2, 1
+mv t5, t4
+add t5, t5, t3
+sw t2, 0(t5)
+lw t2, 0(t4)
+bne t2, zero ,QS_Sort_end_58
+j QS_Sort_null_error318
+QS_Sort_end_58:
+j QS_Sort_no_null_error319
+QS_Sort_null_error318:
+la a0, msg_0
+j error
+QS_Sort_no_null_error319:
+li t3, 1
+bne t3, zero ,QS_Sort_end_59
+j QS_Sort_null_error322
+QS_Sort_end_59:
+j QS_Sort_no_null_error323
+QS_Sort_null_error322:
+la a0, msg_0
+j error
+QS_Sort_no_null_error323:
+mv t3, t0
+li t4, 0
+li t5, 1
+sub t4, t4, t5
+slt t5, t4, t3
+bne t5, zero ,QS_Sort_end_60
+j QS_Sort_if_else327
+QS_Sort_end_60:
+j QS_Sort_if_end328
+QS_Sort_if_else327:
+la a0, msg_1
+j error
+QS_Sort_if_end328:
+lw t4, 0(t2)
+slt t5, t3, t4
+bne t5, zero ,QS_Sort_end_61
+j QS_Sort_if_else331
+QS_Sort_end_61:
+j QS_Sort_if_end332
+QS_Sort_if_else331:
+la a0, msg_1
+j error
+QS_Sort_if_end332:
+li t4, 4
+mul t5, t3, t4
+add t5, t5, t4
+add t3, t2, t5
+li t2, 0
+li t4, 4
+add t2, t2, t4
+add t5, a2, t2
+mv t2, t5
+add t2, t2, t4
+lw t4, 0(t2)
+bne t4, zero ,QS_Sort_end_62
+j QS_Sort_null_error343
+QS_Sort_end_62:
+j QS_Sort_no_null_error344
+QS_Sort_null_error343:
+la a0, msg_0
+j error
+QS_Sort_no_null_error344:
+lw t2, 0(t5)
+mv t4, a4
+li t5, 0
+li s1, 1
+sub t5, t5, s1
+slt s1, t5, t4
+bne s1, zero ,QS_Sort_end_63
+j QS_Sort_if_else349
+QS_Sort_end_63:
+j QS_Sort_if_end350
+QS_Sort_if_else349:
+la a0, msg_1
+j error
+QS_Sort_if_end350:
+lw t5, 0(t2)
+slt s1, t4, t5
+bne s1, zero ,QS_Sort_end_64
+j QS_Sort_if_else353
+QS_Sort_end_64:
+j QS_Sort_if_end354
+QS_Sort_if_else353:
+la a0, msg_1
+j error
+QS_Sort_if_end354:
+li t5, 4
+mul s1, t4, t5
+add s1, s1, t5
+add t4, t2, s1
+lw t2, 0(t4)
+sw t2, 0(t3)
+li t2, 0
+li t3, 4
+add t2, t2, t3
+add t4, a2, t2
+li t2, 1
+mv t5, t4
+add t5, t5, t3
+sw t2, 0(t5)
+lw t2, 0(t4)
+bne t2, zero ,QS_Sort_end_65
+j QS_Sort_null_error364
+QS_Sort_end_65:
+j QS_Sort_no_null_error365
+QS_Sort_null_error364:
+la a0, msg_0
+j error
+QS_Sort_no_null_error365:
+mv t3, a4
+li t4, 0
+li t5, 1
+sub t4, t4, t5
+slt t5, t4, t3
+bne t5, zero ,QS_Sort_end_66
+j QS_Sort_if_else370
+QS_Sort_end_66:
+j QS_Sort_if_end371
+QS_Sort_if_else370:
+la a0, msg_1
+j error
+QS_Sort_if_end371:
+lw t4, 0(t2)
+slt t5, t3, t4
+bne t5, zero ,QS_Sort_end_67
+j QS_Sort_if_else374
+QS_Sort_end_67:
+j QS_Sort_if_end375
+QS_Sort_if_else374:
+la a0, msg_1
+j error
+QS_Sort_if_end375:
+li t4, 4
+mul t5, t3, t4
+add t5, t5, t4
+add t3, t2, t5
+li t2, 1
+bne t2, zero ,QS_Sort_end_68
+j QS_Sort_null_error381
+QS_Sort_end_68:
+j QS_Sort_no_null_error382
+QS_Sort_null_error381:
+la a0, msg_0
+j error
+QS_Sort_no_null_error382:
+mv t2, t1
+sw t2, 0(t3)
+mv t1, a2
+lw t2, 0(t1)
+lw t3, 4(t2)
+mv t2, a3
+li t4, 1
+bne t4, zero ,QS_Sort_end_69
+j QS_Sort_null_error391
+QS_Sort_end_69:
+j QS_Sort_no_null_error392
+QS_Sort_null_error391:
+la a0, msg_0
+j error
+QS_Sort_no_null_error392:
+mv t4, t0
+li t5, 1
+sub s1, t4, t5
+mv s11, t3
+sw a2, -576(fp)
+sw a4, -580(fp)
+mv a2, t1
+mv a3, t2
+mv a4, s1
+sw t0, -584(fp)
+jalr s11
+mv s10, a0
+lw a2, -576(fp)
+lw a4, -580(fp)
+lw t0, -584(fp)
+mv t4, s10
+mv t1, t4
+mv t1, a2
+lw t2, 0(t1)
+lw t3, 4(t2)
+li t2, 1
+bne t2, zero ,QS_Sort_end_70
+j QS_Sort_null_error401
+QS_Sort_end_70:
+j QS_Sort_no_null_error402
+QS_Sort_null_error401:
+la a0, msg_0
+j error
+QS_Sort_no_null_error402:
+mv t2, t0
+li t0, 1
+add t4, t2, t0
+mv t0, a4
+mv s11, t3
+mv a2, t1
+mv a3, t4
+mv a4, t0
+jalr s11
+mv s10, a0
+mv t2, s10
+mv t0, t2
+j QS_Sort_if_end_405
+QS_Sort_if_else_4:
+li t0, 0
+mv t1, t0
+QS_Sort_if_end_405:
+li t0, 0
+sw t0, -588(fp)
+lw s3, -12(fp)
+lw s4, -16(fp)
+lw s5, -20(fp)
+lw s6, -24(fp)
+lw s7, -28(fp)
+lw s8, -32(fp)
+lw s9, -36(fp)
+lw s1, -40(fp)
+lw s2, -44(fp)
+lw a0, -588(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 588
+jr ra
+
+.globl QS_Print
+QS_Print:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 92
+sub sp, sp, t6
+sw ra, -4(fp)
+sw s3, -12(fp)
+sw s4, -16(fp)
+sw s5, -20(fp)
+sw s6, -24(fp)
+sw s7, -28(fp)
+sw s8, -32(fp)
+sw s9, -36(fp)
+sw s1, -40(fp)
+sw s2, -44(fp)
+li t0, 0
+mv t1, t0
+QS_Print_while1:
+li t0, 1
+bne t0, zero ,QS_Print_end_71
+j QS_Print_null_error5
+QS_Print_end_71:
+j QS_Print_no_null_error6
+QS_Print_null_error5:
+la a0, msg_0
+j error
+QS_Print_no_null_error6:
+mv t2, t1
+li t3, 8
+li t4, 4
+add t3, t3, t4
+add t5, a2, t3
+mv s1, t5
+add s1, s1, t4
+lw s2, 0(s1)
+bne s2, zero ,QS_Print_end_72
+j QS_Print_null_error13
+QS_Print_end_72:
+j QS_Print_no_null_error14
+QS_Print_null_error13:
+la a0, msg_0
+j error
+QS_Print_no_null_error14:
+lw s3, 0(t5)
+slt s4, t2, s3
+bne s4, zero ,QS_Print_end_73
+j QS_Print_break_while_15
+QS_Print_end_73:
+li s5, 0
+li s6, 4
+add s5, s5, s6
+add s7, a2, s5
+mv s8, s7
+add s8, s8, s6
+lw s9, 0(s8)
+bne s9, zero ,QS_Print_end_74
+j QS_Print_null_error23
+QS_Print_end_74:
+j QS_Print_no_null_error24
+QS_Print_null_error23:
+la a0, msg_0
+j error
+QS_Print_no_null_error24:
+lw a3, 0(s7)
+li a4, 1
+bne a4, zero ,QS_Print_end_75
+j QS_Print_null_error27
+QS_Print_end_75:
+j QS_Print_no_null_error28
+QS_Print_null_error27:
+la a0, msg_0
+j error
+QS_Print_no_null_error28:
+mv a5, t1
+li a6, 0
+li a7, 1
+sub a6, a6, a7
+slt s10, a6, a5
+sw s10, -48(fp)
+lw s10, -48(fp)
+bne s10, zero ,QS_Print_end_76
+j QS_Print_if_else32
+QS_Print_end_76:
+j QS_Print_if_end33
+QS_Print_if_else32:
+la a0, msg_1
+j error
+QS_Print_if_end33:
+lw s10, 0(a3)
+sw s10, -52(fp)
+lw s11, -52(fp)
+slt s10, a5, s11
+sw s10, -56(fp)
+lw s10, -56(fp)
+bne s10, zero ,QS_Print_end_77
+j QS_Print_if_else36
+QS_Print_end_77:
+j QS_Print_if_end37
+QS_Print_if_else36:
+la a0, msg_1
+j error
+QS_Print_if_end37:
+li s10, 4
+sw s10, -60(fp)
+lw s11, -60(fp)
+mul s10, a5, s11
+sw s10, -64(fp)
+lw s10, -64(fp)
+lw s11, -60(fp)
+add s10, s10, s11
+sw s10, -64(fp)
+lw s11, -64(fp)
+add s10, a3, s11
+sw s10, -68(fp)
+lw s11, -68(fp)
+lw s10, 0(s11)
+sw s10, -72(fp)
+lw s10, -72(fp)
+mv a1, s10
+li a0, @print_int
+ecall
+li a1, 10
+li a0, 11
+ecall
+li s10, 1
+sw s10, -76(fp)
+lw s10, -76(fp)
+bne s10, zero ,QS_Print_end_78
+j QS_Print_null_error44
+QS_Print_end_78:
+j QS_Print_no_null_error45
+QS_Print_null_error44:
+la a0, msg_0
+j error
+QS_Print_no_null_error45:
+mv s10, t1
+sw s10, -80(fp)
+li s10, 1
+sw s10, -84(fp)
+lw s10, -80(fp)
+lw s11, -84(fp)
+add s10, s10, s11
+sw s10, -88(fp)
+lw s11, -88(fp)
+mv t1, s11
+j QS_Print_while1
+QS_Print_break_while_15:
+li t0, 0
+sw t0, -92(fp)
+lw s3, -12(fp)
+lw s4, -16(fp)
+lw s5, -20(fp)
+lw s6, -24(fp)
+lw s7, -28(fp)
+lw s8, -32(fp)
+lw s9, -36(fp)
+lw s1, -40(fp)
+lw s2, -44(fp)
+lw a0, -92(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 92
+jr ra
+
+.globl QS_Init
+QS_Init:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 12
+sub sp, sp, t6
+sw ra, -4(fp)
+li t0, 8
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+mv t0, a3
+sw t0, 0(t2)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+mv t0, a3
+li t1, 0
+slt t3, t1, t0
+bne t3, zero ,QS_Init_end_79
+j QS_Init_if_else15
+QS_Init_end_79:
+j QS_Init_if_end16
+QS_Init_if_else15:
+la a0, msg_1
+j error
+QS_Init_if_end16:
+li t1, 4
+mul t3, t0, t1
+add t3, t3, t1
+mv a0, t3
+jal alloc
+mv t1, a0
+sw t0, 0(t1)
+sw t1, 0(t2)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_80
+j QS_Init_null_error25
+QS_Init_end_80:
+j QS_Init_no_null_error26
+QS_Init_null_error25:
+la a0, msg_0
+j error
+QS_Init_no_null_error26:
+li t1, 0
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_81
+j QS_Init_if_else31
+QS_Init_end_81:
+j QS_Init_if_end32
+QS_Init_if_else31:
+la a0, msg_1
+j error
+QS_Init_if_end32:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_82
+j QS_Init_if_else35
+QS_Init_end_82:
+j QS_Init_if_end36
+QS_Init_if_else35:
+la a0, msg_1
+j error
+QS_Init_if_end36:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 20
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_83
+j QS_Init_null_error47
+QS_Init_end_83:
+j QS_Init_no_null_error48
+QS_Init_null_error47:
+la a0, msg_0
+j error
+QS_Init_no_null_error48:
+li t1, 1
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_84
+j QS_Init_if_else53
+QS_Init_end_84:
+j QS_Init_if_end54
+QS_Init_if_else53:
+la a0, msg_1
+j error
+QS_Init_if_end54:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_85
+j QS_Init_if_else57
+QS_Init_end_85:
+j QS_Init_if_end58
+QS_Init_if_else57:
+la a0, msg_1
+j error
+QS_Init_if_end58:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 7
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_86
+j QS_Init_null_error69
+QS_Init_end_86:
+j QS_Init_no_null_error70
+QS_Init_null_error69:
+la a0, msg_0
+j error
+QS_Init_no_null_error70:
+li t1, 2
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_87
+j QS_Init_if_else75
+QS_Init_end_87:
+j QS_Init_if_end76
+QS_Init_if_else75:
+la a0, msg_1
+j error
+QS_Init_if_end76:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_88
+j QS_Init_if_else79
+QS_Init_end_88:
+j QS_Init_if_end80
+QS_Init_if_else79:
+la a0, msg_1
+j error
+QS_Init_if_end80:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 12
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_89
+j QS_Init_null_error91
+QS_Init_end_89:
+j QS_Init_no_null_error92
+QS_Init_null_error91:
+la a0, msg_0
+j error
+QS_Init_no_null_error92:
+li t1, 3
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_90
+j QS_Init_if_else97
+QS_Init_end_90:
+j QS_Init_if_end98
+QS_Init_if_else97:
+la a0, msg_1
+j error
+QS_Init_if_end98:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_91
+j QS_Init_if_else101
+QS_Init_end_91:
+j QS_Init_if_end102
+QS_Init_if_else101:
+la a0, msg_1
+j error
+QS_Init_if_end102:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 18
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_92
+j QS_Init_null_error113
+QS_Init_end_92:
+j QS_Init_no_null_error114
+QS_Init_null_error113:
+la a0, msg_0
+j error
+QS_Init_no_null_error114:
+li t1, 4
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_93
+j QS_Init_if_else119
+QS_Init_end_93:
+j QS_Init_if_end120
+QS_Init_if_else119:
+la a0, msg_1
+j error
+QS_Init_if_end120:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_94
+j QS_Init_if_else123
+QS_Init_end_94:
+j QS_Init_if_end124
+QS_Init_if_else123:
+la a0, msg_1
+j error
+QS_Init_if_end124:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 2
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_95
+j QS_Init_null_error135
+QS_Init_end_95:
+j QS_Init_no_null_error136
+QS_Init_null_error135:
+la a0, msg_0
+j error
+QS_Init_no_null_error136:
+li t1, 5
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_96
+j QS_Init_if_else141
+QS_Init_end_96:
+j QS_Init_if_end142
+QS_Init_if_else141:
+la a0, msg_1
+j error
+QS_Init_if_end142:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_97
+j QS_Init_if_else145
+QS_Init_end_97:
+j QS_Init_if_end146
+QS_Init_if_else145:
+la a0, msg_1
+j error
+QS_Init_if_end146:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 11
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_98
+j QS_Init_null_error157
+QS_Init_end_98:
+j QS_Init_no_null_error158
+QS_Init_null_error157:
+la a0, msg_0
+j error
+QS_Init_no_null_error158:
+li t1, 6
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_99
+j QS_Init_if_else163
+QS_Init_end_99:
+j QS_Init_if_end164
+QS_Init_if_else163:
+la a0, msg_1
+j error
+QS_Init_if_end164:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_100
+j QS_Init_if_else167
+QS_Init_end_100:
+j QS_Init_if_end168
+QS_Init_if_else167:
+la a0, msg_1
+j error
+QS_Init_if_end168:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 6
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_101
+j QS_Init_null_error179
+QS_Init_end_101:
+j QS_Init_no_null_error180
+QS_Init_null_error179:
+la a0, msg_0
+j error
+QS_Init_no_null_error180:
+li t1, 7
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_102
+j QS_Init_if_else185
+QS_Init_end_102:
+j QS_Init_if_end186
+QS_Init_if_else185:
+la a0, msg_1
+j error
+QS_Init_if_end186:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_103
+j QS_Init_if_else189
+QS_Init_end_103:
+j QS_Init_if_end190
+QS_Init_if_else189:
+la a0, msg_1
+j error
+QS_Init_if_end190:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 9
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_104
+j QS_Init_null_error201
+QS_Init_end_104:
+j QS_Init_no_null_error202
+QS_Init_null_error201:
+la a0, msg_0
+j error
+QS_Init_no_null_error202:
+li t1, 8
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_105
+j QS_Init_if_else207
+QS_Init_end_105:
+j QS_Init_if_end208
+QS_Init_if_else207:
+la a0, msg_1
+j error
+QS_Init_if_end208:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_106
+j QS_Init_if_else211
+QS_Init_end_106:
+j QS_Init_if_end212
+QS_Init_if_else211:
+la a0, msg_1
+j error
+QS_Init_if_end212:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 19
+sw t0, 0(t1)
+li t0, 0
+li t1, 4
+add t0, t0, t1
+add t2, a2, t0
+li t0, 1
+mv t3, t2
+add t3, t3, t1
+sw t0, 0(t3)
+lw t0, 0(t2)
+bne t0, zero ,QS_Init_end_107
+j QS_Init_null_error223
+QS_Init_end_107:
+j QS_Init_no_null_error224
+QS_Init_null_error223:
+la a0, msg_0
+j error
+QS_Init_no_null_error224:
+li t1, 9
+li t2, 0
+li t3, 1
+sub t2, t2, t3
+slt t3, t2, t1
+bne t3, zero ,QS_Init_end_108
+j QS_Init_if_else229
+QS_Init_end_108:
+j QS_Init_if_end230
+QS_Init_if_else229:
+la a0, msg_1
+j error
+QS_Init_if_end230:
+lw t2, 0(t0)
+slt t3, t1, t2
+bne t3, zero ,QS_Init_end_109
+j QS_Init_if_else233
+QS_Init_end_109:
+j QS_Init_if_end234
+QS_Init_if_else233:
+la a0, msg_1
+j error
+QS_Init_if_end234:
+li t2, 4
+mul t3, t1, t2
+add t3, t3, t2
+add t1, t0, t3
+li t0, 5
+sw t0, 0(t1)
+li t0, 0
+sw t0, -12(fp)
+lw a0, -12(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 12
+jr ra
+
+.globl error
+error:
+mv a1, a0                                # Move msg address to a1
+li a0, @print_string                     # Code for print_string ecall
+ecall # Print error message in a1
+li a1, 10                                # Load newline character
+li a0, @print_char                       # Code for print_char ecall
+ecall                                    # Print newline
+li a0, @exit                             # Code for exit ecall
+ecall                                    # Exit with code
+abort_17:                                  # Infinite loop
+j abort_17                               # Prevent fallthrough
+
+.globl alloc
+alloc:
+mv a1, a0                                # Move requested size to a1
+li a0, @sbrk                             # Code for ecall: sbrk
+ecall                                    # Request a1 bytes
+jr ra                                    # Return to caller
+
+.data
+
+.globl msg_0
+msg_0:
+.asciiz "null pointer"
+.align 2
+
+.globl msg_1
+msg_1:
+.asciiz "array index out of bounds"
+.align 2
+

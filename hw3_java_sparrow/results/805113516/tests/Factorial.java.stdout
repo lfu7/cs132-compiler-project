@@ -1,0 +1,39 @@
+func _Main()
+v2 = 4
+v3 = 4
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @Fac_ComputeFac
+[vmt_address4 + 0] = f5
+vmt_address6 = [v1 + 0]
+f7 = [vmt_address6 + 0]
+v8 = 10
+v0 = call f7(v1 v8)
+print(v0)
+      return v0
+
+func Fac_ComputeFac(this num)
+v1 = num
+v2 = 1
+v0 = v1 < v2
+if0 v0 goto if_else_3
+v4 = 1
+num_aux = v4
+goto if_end_5
+if_else_3:
+v7 = num
+v9 = this
+vmt_address10 = [v9 + 0]
+f11 = [vmt_address10 + 0]
+v13 = num
+v14 = 1
+v12 = v13 - v14
+v8 = call f11(v9 v12)
+v6 = v7 * v8
+num_aux = v6
+if_end_5:
+v15 = num_aux
+      return v15
+
+

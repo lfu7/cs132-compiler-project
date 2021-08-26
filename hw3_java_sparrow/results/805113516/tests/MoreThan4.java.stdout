@@ -1,0 +1,66 @@
+func _Main()
+v2 = 4
+v3 = 8
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @MT4_Start
+[vmt_address4 + 0] = f5
+f6 = @MT4_Change
+[vmt_address4 + 4] = f6
+vmt_address7 = [v1 + 0]
+f8 = [vmt_address7 + 0]
+v9 = 1
+v10 = 2
+v11 = 3
+v12 = 4
+v13 = 5
+v14 = 6
+v0 = call f8(v1 v9 v10 v11 v12 v13 v14)
+print(v0)
+      return v0
+
+func MT4_Start(this p1 p2 p3 p4 p5 p6)
+v0 = p1
+print(v0)
+v1 = p2
+print(v1)
+v2 = p3
+print(v2)
+v3 = p4
+print(v3)
+v4 = p5
+print(v4)
+v5 = p6
+print(v5)
+v7 = this
+vmt_address8 = [v7 + 0]
+f9 = [vmt_address8 + 4]
+v10 = p6
+v11 = p5
+v12 = p4
+v13 = p3
+v14 = p2
+v15 = p1
+v6 = call f9(v7 v10 v11 v12 v13 v14 v15)
+aux = v6
+v16 = aux
+      return v16
+
+func MT4_Change(this p1 p2 p3 p4 p5 p6)
+v0 = p1
+print(v0)
+v1 = p2
+print(v1)
+v2 = p3
+print(v2)
+v3 = p4
+print(v3)
+v4 = p5
+print(v4)
+v5 = p6
+print(v5)
+v6 = 0
+      return v6
+
+

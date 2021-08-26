@@ -1,0 +1,1100 @@
+func _Main()
+v2 = 4
+v3 = 4
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @TV_Start
+[vmt_address4 + 0] = f5
+vmt_address6 = [v1 + 0]
+f7 = [vmt_address6 + 0]
+v0 = call f7(v1)
+print(v0)
+      return v0
+
+func TV_Start(this)
+v1 = 52
+v2 = 84
+v0 = alloc(v1)
+vmt_address3 = alloc(v2)
+[v0 + 0] = vmt_address3
+f4 = @Tree_Init
+[vmt_address3 + 0] = f4
+f5 = @Tree_SetRight
+[vmt_address3 + 4] = f5
+f6 = @Tree_SetLeft
+[vmt_address3 + 8] = f6
+f7 = @Tree_GetRight
+[vmt_address3 + 12] = f7
+f8 = @Tree_GetLeft
+[vmt_address3 + 16] = f8
+f9 = @Tree_GetKey
+[vmt_address3 + 20] = f9
+f10 = @Tree_SetKey
+[vmt_address3 + 24] = f10
+f11 = @Tree_GetHas_Right
+[vmt_address3 + 28] = f11
+f12 = @Tree_GetHas_Left
+[vmt_address3 + 32] = f12
+f13 = @Tree_SetHas_Left
+[vmt_address3 + 36] = f13
+f14 = @Tree_SetHas_Right
+[vmt_address3 + 40] = f14
+f15 = @Tree_Compare
+[vmt_address3 + 44] = f15
+f16 = @Tree_Insert
+[vmt_address3 + 48] = f16
+f17 = @Tree_Delete
+[vmt_address3 + 52] = f17
+f18 = @Tree_Remove
+[vmt_address3 + 56] = f18
+f19 = @Tree_RemoveRight
+[vmt_address3 + 60] = f19
+f20 = @Tree_RemoveLeft
+[vmt_address3 + 64] = f20
+f21 = @Tree_Search
+[vmt_address3 + 68] = f21
+f22 = @Tree_Print
+[vmt_address3 + 72] = f22
+f23 = @Tree_RecPrint
+[vmt_address3 + 76] = f23
+f24 = @Tree_accept
+[vmt_address3 + 80] = f24
+root = v0
+v26 = root
+vmt_address27 = [v26 + 0]
+f28 = [vmt_address27 + 0]
+v29 = 16
+v25 = call f28(v26 v29)
+ntb = v25
+v31 = root
+vmt_address32 = [v31 + 0]
+f33 = [vmt_address32 + 72]
+v30 = call f33(v31)
+ntb = v30
+v34 = 100000000
+print(v34)
+v36 = root
+vmt_address37 = [v36 + 0]
+f38 = [vmt_address37 + 48]
+v39 = 8
+v35 = call f38(v36 v39)
+ntb = v35
+v41 = root
+vmt_address42 = [v41 + 0]
+f43 = [vmt_address42 + 48]
+v44 = 24
+v40 = call f43(v41 v44)
+ntb = v40
+v46 = root
+vmt_address47 = [v46 + 0]
+f48 = [vmt_address47 + 48]
+v49 = 4
+v45 = call f48(v46 v49)
+ntb = v45
+v51 = root
+vmt_address52 = [v51 + 0]
+f53 = [vmt_address52 + 48]
+v54 = 12
+v50 = call f53(v51 v54)
+ntb = v50
+v56 = root
+vmt_address57 = [v56 + 0]
+f58 = [vmt_address57 + 48]
+v59 = 20
+v55 = call f58(v56 v59)
+ntb = v55
+v61 = root
+vmt_address62 = [v61 + 0]
+f63 = [vmt_address62 + 48]
+v64 = 28
+v60 = call f63(v61 v64)
+ntb = v60
+v66 = root
+vmt_address67 = [v66 + 0]
+f68 = [vmt_address67 + 48]
+v69 = 14
+v65 = call f68(v66 v69)
+ntb = v65
+v71 = root
+vmt_address72 = [v71 + 0]
+f73 = [vmt_address72 + 72]
+v70 = call f73(v71)
+ntb = v70
+v74 = 100000000
+print(v74)
+v76 = 20
+v77 = 4
+v75 = alloc(v76)
+vmt_address78 = alloc(v77)
+[v75 + 0] = vmt_address78
+f79 = @MyVisitor_visit
+[vmt_address78 + 0] = f79
+f80 = @MyVisitor_visit
+[vmt_address78 + 0] = f80
+v = v75
+v81 = 50000000
+print(v81)
+v83 = root
+vmt_address84 = [v83 + 0]
+f85 = [vmt_address84 + 80]
+v86 = v
+v82 = call f85(v83 v86)
+nti = v82
+v87 = 100000000
+print(v87)
+v89 = root
+vmt_address90 = [v89 + 0]
+f91 = [vmt_address90 + 68]
+v92 = 24
+v88 = call f91(v89 v92)
+print(v88)
+v94 = root
+vmt_address95 = [v94 + 0]
+f96 = [vmt_address95 + 68]
+v97 = 12
+v93 = call f96(v94 v97)
+print(v93)
+v99 = root
+vmt_address100 = [v99 + 0]
+f101 = [vmt_address100 + 68]
+v102 = 16
+v98 = call f101(v99 v102)
+print(v98)
+v104 = root
+vmt_address105 = [v104 + 0]
+f106 = [vmt_address105 + 68]
+v107 = 50
+v103 = call f106(v104 v107)
+print(v103)
+v109 = root
+vmt_address110 = [v109 + 0]
+f111 = [vmt_address110 + 68]
+v112 = 12
+v108 = call f111(v109 v112)
+print(v108)
+v114 = root
+vmt_address115 = [v114 + 0]
+f116 = [vmt_address115 + 52]
+v117 = 12
+v113 = call f116(v114 v117)
+ntb = v113
+v119 = root
+vmt_address120 = [v119 + 0]
+f121 = [vmt_address120 + 72]
+v118 = call f121(v119)
+ntb = v118
+v123 = root
+vmt_address124 = [v123 + 0]
+f125 = [vmt_address124 + 68]
+v126 = 12
+v122 = call f125(v123 v126)
+print(v122)
+v127 = 0
+      return v127
+
+func Tree_Init(this v_key)
+v0 = 16
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = v_key
+[v2 + 0] = v5
+v6 = 24
+v7 = 4
+v6 = v6 + v7
+v8 = this + v6
+v9 = 1
+v10 = v8
+v10 = v10 + v7
+[v10 + 0] = v9
+v11 = 0
+[v8 + 0] = v11
+v12 = 32
+v13 = 4
+v12 = v12 + v13
+v14 = this + v12
+v15 = 1
+v16 = v14
+v16 = v16 + v13
+[v16 + 0] = v15
+v17 = 0
+[v14 + 0] = v17
+v18 = 1
+      return v18
+
+func Tree_SetRight(this rn)
+v0 = 8
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = rn
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func Tree_SetLeft(this ln)
+v0 = 0
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = ln
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func Tree_GetRight(this)
+v1 = 8
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Tree_GetLeft(this)
+v1 = 0
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Tree_GetKey(this)
+v1 = 16
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Tree_SetKey(this v_key)
+v0 = 16
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = v_key
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func Tree_GetHas_Right(this)
+v1 = 32
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Tree_GetHas_Left(this)
+v1 = 24
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Tree_SetHas_Left(this val)
+v0 = 24
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = val
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func Tree_SetHas_Right(this val)
+v0 = 32
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = val
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func Tree_Compare(this num1 num2)
+v0 = 0
+ntb = v0
+v2 = num2
+v3 = 1
+v1 = v2 + v3
+nti = v1
+v5 = num1
+v6 = num2
+v4 = v5 < v6
+if0 v4 goto if_else_7
+v8 = 0
+ntb = v8
+goto if_end_9
+if_else_7:
+v12 = num1
+v13 = nti
+v11 = v12 < v13
+if0 v11 goto if_else_14
+v10 = 0
+goto if_end_15
+if_else_14:
+v10 = 1
+if_end_15:
+if0 v10 goto if_else_16
+v17 = 0
+ntb = v17
+goto if_end_18
+if_else_16:
+v19 = 1
+ntb = v19
+if_end_18:
+if_end_9:
+v20 = ntb
+      return v20
+
+func Tree_Insert(this v_key)
+v1 = 52
+v2 = 84
+v0 = alloc(v1)
+vmt_address3 = alloc(v2)
+[v0 + 0] = vmt_address3
+f4 = @Tree_Init
+[vmt_address3 + 0] = f4
+f5 = @Tree_SetRight
+[vmt_address3 + 4] = f5
+f6 = @Tree_SetLeft
+[vmt_address3 + 8] = f6
+f7 = @Tree_GetRight
+[vmt_address3 + 12] = f7
+f8 = @Tree_GetLeft
+[vmt_address3 + 16] = f8
+f9 = @Tree_GetKey
+[vmt_address3 + 20] = f9
+f10 = @Tree_SetKey
+[vmt_address3 + 24] = f10
+f11 = @Tree_GetHas_Right
+[vmt_address3 + 28] = f11
+f12 = @Tree_GetHas_Left
+[vmt_address3 + 32] = f12
+f13 = @Tree_SetHas_Left
+[vmt_address3 + 36] = f13
+f14 = @Tree_SetHas_Right
+[vmt_address3 + 40] = f14
+f15 = @Tree_Compare
+[vmt_address3 + 44] = f15
+f16 = @Tree_Insert
+[vmt_address3 + 48] = f16
+f17 = @Tree_Delete
+[vmt_address3 + 52] = f17
+f18 = @Tree_Remove
+[vmt_address3 + 56] = f18
+f19 = @Tree_RemoveRight
+[vmt_address3 + 60] = f19
+f20 = @Tree_RemoveLeft
+[vmt_address3 + 64] = f20
+f21 = @Tree_Search
+[vmt_address3 + 68] = f21
+f22 = @Tree_Print
+[vmt_address3 + 72] = f22
+f23 = @Tree_RecPrint
+[vmt_address3 + 76] = f23
+f24 = @Tree_accept
+[vmt_address3 + 80] = f24
+new_node = v0
+v26 = new_node
+vmt_address27 = [v26 + 0]
+f28 = [vmt_address27 + 0]
+v29 = v_key
+v25 = call f28(v26 v29)
+ntb = v25
+v30 = this
+current_node = v30
+v31 = 1
+cont = v31
+while32:
+v33 = cont
+if0 v33 goto break_while_34
+v36 = current_node
+vmt_address37 = [v36 + 0]
+f38 = [vmt_address37 + 20]
+v35 = call f38(v36)
+key_aux = v35
+v40 = v_key
+v41 = key_aux
+v39 = v40 < v41
+if0 v39 goto if_else_42
+v44 = current_node
+vmt_address45 = [v44 + 0]
+f46 = [vmt_address45 + 32]
+v43 = call f46(v44)
+if0 v43 goto if_else_47
+v49 = current_node
+vmt_address50 = [v49 + 0]
+f51 = [vmt_address50 + 16]
+v48 = call f51(v49)
+current_node = v48
+goto if_end_52
+if_else_47:
+v53 = 0
+cont = v53
+v55 = current_node
+vmt_address56 = [v55 + 0]
+f57 = [vmt_address56 + 36]
+v58 = 1
+v54 = call f57(v55 v58)
+ntb = v54
+v60 = current_node
+vmt_address61 = [v60 + 0]
+f62 = [vmt_address61 + 8]
+v63 = new_node
+v59 = call f62(v60 v63)
+ntb = v59
+if_end_52:
+goto if_end_64
+if_else_42:
+v66 = current_node
+vmt_address67 = [v66 + 0]
+f68 = [vmt_address67 + 28]
+v65 = call f68(v66)
+if0 v65 goto if_else_69
+v71 = current_node
+vmt_address72 = [v71 + 0]
+f73 = [vmt_address72 + 12]
+v70 = call f73(v71)
+current_node = v70
+goto if_end_74
+if_else_69:
+v75 = 0
+cont = v75
+v77 = current_node
+vmt_address78 = [v77 + 0]
+f79 = [vmt_address78 + 40]
+v80 = 1
+v76 = call f79(v77 v80)
+ntb = v76
+v82 = current_node
+vmt_address83 = [v82 + 0]
+f84 = [vmt_address83 + 4]
+v85 = new_node
+v81 = call f84(v82 v85)
+ntb = v81
+if_end_74:
+if_end_64:
+goto while32
+break_while_34:
+v86 = 1
+      return v86
+
+func Tree_Delete(this v_key)
+v0 = this
+current_node = v0
+v1 = this
+parent_node = v1
+v2 = 1
+cont = v2
+v3 = 0
+found = v3
+v4 = 1
+is_root = v4
+while5:
+v6 = cont
+if0 v6 goto break_while_7
+v9 = current_node
+vmt_address10 = [v9 + 0]
+f11 = [vmt_address10 + 20]
+v8 = call f11(v9)
+key_aux = v8
+v13 = v_key
+v14 = key_aux
+v12 = v13 < v14
+if0 v12 goto if_else_15
+v17 = current_node
+vmt_address18 = [v17 + 0]
+f19 = [vmt_address18 + 32]
+v16 = call f19(v17)
+if0 v16 goto if_else_20
+v21 = current_node
+parent_node = v21
+v23 = current_node
+vmt_address24 = [v23 + 0]
+f25 = [vmt_address24 + 16]
+v22 = call f25(v23)
+current_node = v22
+goto if_end_26
+if_else_20:
+v27 = 0
+cont = v27
+if_end_26:
+goto if_end_28
+if_else_15:
+v30 = key_aux
+v31 = v_key
+v29 = v30 < v31
+if0 v29 goto if_else_32
+v34 = current_node
+vmt_address35 = [v34 + 0]
+f36 = [vmt_address35 + 28]
+v33 = call f36(v34)
+if0 v33 goto if_else_37
+v38 = current_node
+parent_node = v38
+v40 = current_node
+vmt_address41 = [v40 + 0]
+f42 = [vmt_address41 + 12]
+v39 = call f42(v40)
+current_node = v39
+goto if_end_43
+if_else_37:
+v44 = 0
+cont = v44
+if_end_43:
+goto if_end_45
+if_else_32:
+v46 = is_root
+if0 v46 goto if_else_47
+v51 = current_node
+vmt_address52 = [v51 + 0]
+f53 = [vmt_address52 + 28]
+v50 = call f53(v51)
+if0 v50 goto if_else_54
+v49 = 0
+goto if_end_55
+if_else_54:
+v49 = 1
+if_end_55:
+v58 = current_node
+vmt_address59 = [v58 + 0]
+f60 = [vmt_address59 + 32]
+v57 = call f60(v58)
+if0 v57 goto if_else_61
+v56 = 0
+goto if_end_62
+if_else_61:
+v56 = 1
+if_end_62:
+v48 = v49 * v56
+if0 v48 goto if_else_63
+v64 = 1
+ntb = v64
+goto if_end_65
+if_else_63:
+v67 = this
+vmt_address68 = [v67 + 0]
+f69 = [vmt_address68 + 56]
+v70 = parent_node
+v71 = current_node
+v66 = call f69(v67 v70 v71)
+ntb = v66
+if_end_65:
+goto if_end_72
+if_else_47:
+v74 = this
+vmt_address75 = [v74 + 0]
+f76 = [vmt_address75 + 56]
+v77 = parent_node
+v78 = current_node
+v73 = call f76(v74 v77 v78)
+ntb = v73
+if_end_72:
+v79 = 1
+found = v79
+v80 = 0
+cont = v80
+if_end_45:
+if_end_28:
+v81 = 0
+is_root = v81
+goto while5
+break_while_7:
+v82 = found
+      return v82
+
+func Tree_Remove(this p_node c_node)
+v1 = c_node
+vmt_address2 = [v1 + 0]
+f3 = [vmt_address2 + 32]
+v0 = call f3(v1)
+if0 v0 goto if_else_4
+v6 = this
+vmt_address7 = [v6 + 0]
+f8 = [vmt_address7 + 64]
+v9 = p_node
+v10 = c_node
+v5 = call f8(v6 v9 v10)
+ntb = v5
+goto if_end_11
+if_else_4:
+v13 = c_node
+vmt_address14 = [v13 + 0]
+f15 = [vmt_address14 + 28]
+v12 = call f15(v13)
+if0 v12 goto if_else_16
+v18 = this
+vmt_address19 = [v18 + 0]
+f20 = [vmt_address19 + 60]
+v21 = p_node
+v22 = c_node
+v17 = call f20(v18 v21 v22)
+ntb = v17
+goto if_end_23
+if_else_16:
+v25 = c_node
+vmt_address26 = [v25 + 0]
+f27 = [vmt_address26 + 20]
+v24 = call f27(v25)
+auxkey1 = v24
+v30 = p_node
+vmt_address31 = [v30 + 0]
+f32 = [vmt_address31 + 16]
+v29 = call f32(v30)
+vmt_address33 = [v29 + 0]
+f34 = [vmt_address33 + 20]
+v28 = call f34(v29)
+auxkey2 = v28
+v36 = this
+vmt_address37 = [v36 + 0]
+f38 = [vmt_address37 + 44]
+v39 = auxkey1
+v40 = auxkey2
+v35 = call f38(v36 v39 v40)
+if0 v35 goto if_else_41
+v43 = p_node
+vmt_address44 = [v43 + 0]
+f45 = [vmt_address44 + 8]
+v47 = 40
+v48 = 4
+v47 = v47 + v48
+v49 = this + v47
+v46 = [v49 + 0]
+v42 = call f45(v43 v46)
+ntb = v42
+v51 = p_node
+vmt_address52 = [v51 + 0]
+f53 = [vmt_address52 + 36]
+v54 = 0
+v50 = call f53(v51 v54)
+ntb = v50
+goto if_end_55
+if_else_41:
+v57 = p_node
+vmt_address58 = [v57 + 0]
+f59 = [vmt_address58 + 4]
+v61 = 40
+v62 = 4
+v61 = v61 + v62
+v63 = this + v61
+v60 = [v63 + 0]
+v56 = call f59(v57 v60)
+ntb = v56
+v65 = p_node
+vmt_address66 = [v65 + 0]
+f67 = [vmt_address66 + 40]
+v68 = 0
+v64 = call f67(v65 v68)
+ntb = v64
+if_end_55:
+if_end_23:
+if_end_11:
+v69 = 1
+      return v69
+
+func Tree_RemoveRight(this p_node c_node)
+while0:
+v2 = c_node
+vmt_address3 = [v2 + 0]
+f4 = [vmt_address3 + 28]
+v1 = call f4(v2)
+if0 v1 goto break_while_5
+v7 = c_node
+vmt_address8 = [v7 + 0]
+f9 = [vmt_address8 + 24]
+v12 = c_node
+vmt_address13 = [v12 + 0]
+f14 = [vmt_address13 + 12]
+v11 = call f14(v12)
+vmt_address15 = [v11 + 0]
+f16 = [vmt_address15 + 20]
+v10 = call f16(v11)
+v6 = call f9(v7 v10)
+ntb = v6
+v17 = c_node
+p_node = v17
+v19 = c_node
+vmt_address20 = [v19 + 0]
+f21 = [vmt_address20 + 12]
+v18 = call f21(v19)
+c_node = v18
+goto while0
+break_while_5:
+v23 = p_node
+vmt_address24 = [v23 + 0]
+f25 = [vmt_address24 + 4]
+v27 = 40
+v28 = 4
+v27 = v27 + v28
+v29 = this + v27
+v26 = [v29 + 0]
+v22 = call f25(v23 v26)
+ntb = v22
+v31 = p_node
+vmt_address32 = [v31 + 0]
+f33 = [vmt_address32 + 40]
+v34 = 0
+v30 = call f33(v31 v34)
+ntb = v30
+v35 = 1
+      return v35
+
+func Tree_RemoveLeft(this p_node c_node)
+while0:
+v2 = c_node
+vmt_address3 = [v2 + 0]
+f4 = [vmt_address3 + 32]
+v1 = call f4(v2)
+if0 v1 goto break_while_5
+v7 = c_node
+vmt_address8 = [v7 + 0]
+f9 = [vmt_address8 + 24]
+v12 = c_node
+vmt_address13 = [v12 + 0]
+f14 = [vmt_address13 + 16]
+v11 = call f14(v12)
+vmt_address15 = [v11 + 0]
+f16 = [vmt_address15 + 20]
+v10 = call f16(v11)
+v6 = call f9(v7 v10)
+ntb = v6
+v17 = c_node
+p_node = v17
+v19 = c_node
+vmt_address20 = [v19 + 0]
+f21 = [vmt_address20 + 16]
+v18 = call f21(v19)
+c_node = v18
+goto while0
+break_while_5:
+v23 = p_node
+vmt_address24 = [v23 + 0]
+f25 = [vmt_address24 + 8]
+v27 = 40
+v28 = 4
+v27 = v27 + v28
+v29 = this + v27
+v26 = [v29 + 0]
+v22 = call f25(v23 v26)
+ntb = v22
+v31 = p_node
+vmt_address32 = [v31 + 0]
+f33 = [vmt_address32 + 36]
+v34 = 0
+v30 = call f33(v31 v34)
+ntb = v30
+v35 = 1
+      return v35
+
+func Tree_Search(this v_key)
+v0 = this
+current_node = v0
+v1 = 1
+cont = v1
+v2 = 0
+ifound = v2
+while3:
+v4 = cont
+if0 v4 goto break_while_5
+v7 = current_node
+vmt_address8 = [v7 + 0]
+f9 = [vmt_address8 + 20]
+v6 = call f9(v7)
+key_aux = v6
+v11 = v_key
+v12 = key_aux
+v10 = v11 < v12
+if0 v10 goto if_else_13
+v15 = current_node
+vmt_address16 = [v15 + 0]
+f17 = [vmt_address16 + 32]
+v14 = call f17(v15)
+if0 v14 goto if_else_18
+v20 = current_node
+vmt_address21 = [v20 + 0]
+f22 = [vmt_address21 + 16]
+v19 = call f22(v20)
+current_node = v19
+goto if_end_23
+if_else_18:
+v24 = 0
+cont = v24
+if_end_23:
+goto if_end_25
+if_else_13:
+v27 = key_aux
+v28 = v_key
+v26 = v27 < v28
+if0 v26 goto if_else_29
+v31 = current_node
+vmt_address32 = [v31 + 0]
+f33 = [vmt_address32 + 28]
+v30 = call f33(v31)
+if0 v30 goto if_else_34
+v36 = current_node
+vmt_address37 = [v36 + 0]
+f38 = [vmt_address37 + 12]
+v35 = call f38(v36)
+current_node = v35
+goto if_end_39
+if_else_34:
+v40 = 0
+cont = v40
+if_end_39:
+goto if_end_41
+if_else_29:
+v42 = 1
+ifound = v42
+v43 = 0
+cont = v43
+if_end_41:
+if_end_25:
+goto while3
+break_while_5:
+v44 = ifound
+      return v44
+
+func Tree_Print(this)
+v0 = this
+current_node = v0
+v2 = this
+vmt_address3 = [v2 + 0]
+f4 = [vmt_address3 + 76]
+v5 = current_node
+v1 = call f4(v2 v5)
+ntb = v1
+v6 = 1
+      return v6
+
+func Tree_RecPrint(this node)
+v1 = node
+vmt_address2 = [v1 + 0]
+f3 = [vmt_address2 + 32]
+v0 = call f3(v1)
+if0 v0 goto if_else_4
+v6 = this
+vmt_address7 = [v6 + 0]
+f8 = [vmt_address7 + 76]
+v10 = node
+vmt_address11 = [v10 + 0]
+f12 = [vmt_address11 + 16]
+v9 = call f12(v10)
+v5 = call f8(v6 v9)
+ntb = v5
+goto if_end_13
+if_else_4:
+v14 = 1
+ntb = v14
+if_end_13:
+v16 = node
+vmt_address17 = [v16 + 0]
+f18 = [vmt_address17 + 20]
+v15 = call f18(v16)
+print(v15)
+v20 = node
+vmt_address21 = [v20 + 0]
+f22 = [vmt_address21 + 28]
+v19 = call f22(v20)
+if0 v19 goto if_else_23
+v25 = this
+vmt_address26 = [v25 + 0]
+f27 = [vmt_address26 + 76]
+v29 = node
+vmt_address30 = [v29 + 0]
+f31 = [vmt_address30 + 12]
+v28 = call f31(v29)
+v24 = call f27(v25 v28)
+ntb = v24
+goto if_end_32
+if_else_23:
+v33 = 1
+ntb = v33
+if_end_32:
+v34 = 1
+      return v34
+
+func Tree_accept(this v)
+v0 = 333
+print(v0)
+v2 = v
+vmt_address3 = [v2 + 0]
+f4 = [vmt_address3 + 0]
+v5 = this
+v1 = call f4(v2 v5)
+nti = v1
+v6 = 0
+      return v6
+
+func Visitor_visit(this n)
+v1 = n
+vmt_address2 = [v1 + 0]
+f3 = [vmt_address2 + 28]
+v0 = call f3(v1)
+if0 v0 goto if_else_4
+v5 = 8
+v6 = 4
+v5 = v5 + v6
+v7 = this + v5
+v8 = 1
+v9 = v7
+v9 = v9 + v6
+[v9 + 0] = v8
+v11 = n
+vmt_address12 = [v11 + 0]
+f13 = [vmt_address12 + 12]
+v10 = call f13(v11)
+[v7 + 0] = v10
+v16 = 8
+v17 = 4
+v16 = v16 + v17
+v18 = this + v16
+v15 = [v18 + 0]
+vmt_address19 = [v15 + 0]
+f20 = [vmt_address19 + 80]
+v21 = this
+v14 = call f20(v15 v21)
+nti = v14
+goto if_end_22
+if_else_4:
+v23 = 0
+nti = v23
+if_end_22:
+v25 = n
+vmt_address26 = [v25 + 0]
+f27 = [vmt_address26 + 32]
+v24 = call f27(v25)
+if0 v24 goto if_else_28
+v29 = 0
+v30 = 4
+v29 = v29 + v30
+v31 = this + v29
+v32 = 1
+v33 = v31
+v33 = v33 + v30
+[v33 + 0] = v32
+v35 = n
+vmt_address36 = [v35 + 0]
+f37 = [vmt_address36 + 16]
+v34 = call f37(v35)
+[v31 + 0] = v34
+v40 = 0
+v41 = 4
+v40 = v40 + v41
+v42 = this + v40
+v39 = [v42 + 0]
+vmt_address43 = [v39 + 0]
+f44 = [vmt_address43 + 80]
+v45 = this
+v38 = call f44(v39 v45)
+nti = v38
+goto if_end_46
+if_else_28:
+v47 = 0
+nti = v47
+if_end_46:
+v48 = 0
+      return v48
+
+func MyVisitor_visit(this n)
+v1 = n
+vmt_address2 = [v1 + 0]
+f3 = [vmt_address2 + 28]
+v0 = call f3(v1)
+if0 v0 goto if_else_4
+v5 = 8
+v6 = 4
+v5 = v5 + v6
+v7 = this + v5
+v8 = 1
+v9 = v7
+v9 = v9 + v6
+[v9 + 0] = v8
+v11 = n
+vmt_address12 = [v11 + 0]
+f13 = [vmt_address12 + 12]
+v10 = call f13(v11)
+[v7 + 0] = v10
+v16 = 8
+v17 = 4
+v16 = v16 + v17
+v18 = this + v16
+v15 = [v18 + 0]
+vmt_address19 = [v15 + 0]
+f20 = [vmt_address19 + 80]
+v21 = this
+v14 = call f20(v15 v21)
+nti = v14
+goto if_end_22
+if_else_4:
+v23 = 0
+nti = v23
+if_end_22:
+v25 = n
+vmt_address26 = [v25 + 0]
+f27 = [vmt_address26 + 20]
+v24 = call f27(v25)
+print(v24)
+v29 = n
+vmt_address30 = [v29 + 0]
+f31 = [vmt_address30 + 32]
+v28 = call f31(v29)
+if0 v28 goto if_else_32
+v33 = 0
+v34 = 4
+v33 = v33 + v34
+v35 = this + v33
+v36 = 1
+v37 = v35
+v37 = v37 + v34
+[v37 + 0] = v36
+v39 = n
+vmt_address40 = [v39 + 0]
+f41 = [vmt_address40 + 16]
+v38 = call f41(v39)
+[v35 + 0] = v38
+v44 = 0
+v45 = 4
+v44 = v44 + v45
+v46 = this + v44
+v43 = [v46 + 0]
+vmt_address47 = [v43 + 0]
+f48 = [vmt_address47 + 80]
+v49 = this
+v42 = call f48(v43 v49)
+nti = v42
+goto if_end_50
+if_else_32:
+v51 = 0
+nti = v51
+if_end_50:
+v52 = 0
+      return v52
+
+

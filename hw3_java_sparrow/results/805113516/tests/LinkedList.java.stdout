@@ -1,0 +1,832 @@
+func _Main()
+v2 = 4
+v3 = 4
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @LL_Start
+[vmt_address4 + 0] = f5
+vmt_address6 = [v1 + 0]
+f7 = [vmt_address6 + 0]
+v0 = call f7(v1)
+print(v0)
+      return v0
+
+func Element_Init(this v_Age v_Salary v_Married)
+v0 = 0
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = v_Age
+[v2 + 0] = v5
+v6 = 8
+v7 = 4
+v6 = v6 + v7
+v8 = this + v6
+v9 = 1
+v10 = v8
+v10 = v10 + v7
+[v10 + 0] = v9
+v11 = v_Salary
+[v8 + 0] = v11
+v12 = 16
+v13 = 4
+v12 = v12 + v13
+v14 = this + v12
+v15 = 1
+v16 = v14
+v16 = v16 + v13
+[v16 + 0] = v15
+v17 = v_Married
+[v14 + 0] = v17
+v18 = 1
+      return v18
+
+func Element_GetAge(this)
+v1 = 0
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Element_GetSalary(this)
+v1 = 8
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Element_GetMarried(this)
+v1 = 16
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func Element_Equal(this other)
+v0 = 1
+ret_val = v0
+v2 = other
+vmt_address3 = [v2 + 0]
+f4 = [vmt_address3 + 4]
+v1 = call f4(v2)
+aux01 = v1
+v7 = this
+vmt_address8 = [v7 + 0]
+f9 = [vmt_address8 + 20]
+v10 = aux01
+v12 = 0
+v13 = 4
+v12 = v12 + v13
+v14 = this + v12
+v11 = [v14 + 0]
+v6 = call f9(v7 v10 v11)
+if0 v6 goto if_else_15
+v5 = 0
+goto if_end_16
+if_else_15:
+v5 = 1
+if_end_16:
+if0 v5 goto if_else_17
+v18 = 0
+ret_val = v18
+goto if_end_19
+if_else_17:
+v21 = other
+vmt_address22 = [v21 + 0]
+f23 = [vmt_address22 + 8]
+v20 = call f23(v21)
+aux02 = v20
+v26 = this
+vmt_address27 = [v26 + 0]
+f28 = [vmt_address27 + 20]
+v29 = aux02
+v31 = 8
+v32 = 4
+v31 = v31 + v32
+v33 = this + v31
+v30 = [v33 + 0]
+v25 = call f28(v26 v29 v30)
+if0 v25 goto if_else_34
+v24 = 0
+goto if_end_35
+if_else_34:
+v24 = 1
+if_end_35:
+if0 v24 goto if_else_36
+v37 = 0
+ret_val = v37
+goto if_end_38
+if_else_36:
+v40 = 16
+v41 = 4
+v40 = v40 + v41
+v42 = this + v40
+v39 = [v42 + 0]
+if0 v39 goto if_else_43
+v46 = other
+vmt_address47 = [v46 + 0]
+f48 = [vmt_address47 + 12]
+v45 = call f48(v46)
+if0 v45 goto if_else_49
+v44 = 0
+goto if_end_50
+if_else_49:
+v44 = 1
+if_end_50:
+if0 v44 goto if_else_51
+v52 = 0
+ret_val = v52
+goto if_end_53
+if_else_51:
+v54 = 0
+nt = v54
+if_end_53:
+goto if_end_55
+if_else_43:
+v57 = other
+vmt_address58 = [v57 + 0]
+f59 = [vmt_address58 + 12]
+v56 = call f59(v57)
+if0 v56 goto if_else_60
+v61 = 0
+ret_val = v61
+goto if_end_62
+if_else_60:
+v63 = 0
+nt = v63
+if_end_62:
+if_end_55:
+if_end_38:
+if_end_19:
+v64 = ret_val
+      return v64
+
+func Element_Compare(this num1 num2)
+v0 = 0
+retval = v0
+v2 = num2
+v3 = 1
+v1 = v2 + v3
+aux02 = v1
+v5 = num1
+v6 = num2
+v4 = v5 < v6
+if0 v4 goto if_else_7
+v8 = 0
+retval = v8
+goto if_end_9
+if_else_7:
+v12 = num1
+v13 = aux02
+v11 = v12 < v13
+if0 v11 goto if_else_14
+v10 = 0
+goto if_end_15
+if_else_14:
+v10 = 1
+if_end_15:
+if0 v10 goto if_else_16
+v17 = 0
+retval = v17
+goto if_end_18
+if_else_16:
+v19 = 1
+retval = v19
+if_end_18:
+if_end_9:
+v20 = retval
+      return v20
+
+func List_Init(this)
+v0 = 16
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = 1
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func List_InitNew(this v_elem v_next v_end)
+v0 = 16
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = v_end
+[v2 + 0] = v5
+v6 = 0
+v7 = 4
+v6 = v6 + v7
+v8 = this + v6
+v9 = 1
+v10 = v8
+v10 = v10 + v7
+[v10 + 0] = v9
+v11 = v_elem
+[v8 + 0] = v11
+v12 = 8
+v13 = 4
+v12 = v12 + v13
+v14 = this + v12
+v15 = 1
+v16 = v14
+v16 = v16 + v13
+[v16 + 0] = v15
+v17 = v_next
+[v14 + 0] = v17
+v18 = 1
+      return v18
+
+func List_Insert(this new_elem)
+v0 = this
+aux03 = v0
+v2 = 28
+v3 = 40
+v1 = alloc(v2)
+vmt_address4 = alloc(v3)
+[v1 + 0] = vmt_address4
+f5 = @List_Delete
+[vmt_address4 + 16] = f5
+f6 = @List_Print
+[vmt_address4 + 36] = f6
+f7 = @List_Init
+[vmt_address4 + 0] = f7
+f8 = @List_GetElem
+[vmt_address4 + 28] = f8
+f9 = @List_GetNext
+[vmt_address4 + 32] = f9
+f10 = @List_SetNext
+[vmt_address4 + 12] = f10
+f11 = @List_Search
+[vmt_address4 + 20] = f11
+f12 = @List_GetEnd
+[vmt_address4 + 24] = f12
+f13 = @List_InitNew
+[vmt_address4 + 4] = f13
+f14 = @List_Insert
+[vmt_address4 + 8] = f14
+aux02 = v1
+v16 = aux02
+vmt_address17 = [v16 + 0]
+f18 = [vmt_address17 + 4]
+v19 = new_elem
+v20 = aux03
+v21 = 0
+v15 = call f18(v16 v19 v20 v21)
+ret_val = v15
+v22 = aux02
+      return v22
+
+func List_SetNext(this v_next)
+v0 = 8
+v1 = 4
+v0 = v0 + v1
+v2 = this + v0
+v3 = 1
+v4 = v2
+v4 = v4 + v1
+[v4 + 0] = v3
+v5 = v_next
+[v2 + 0] = v5
+v6 = 1
+      return v6
+
+func List_Delete(this e)
+v0 = this
+my_head = v0
+v1 = 0
+ret_val = v1
+v3 = 0
+v4 = 1
+v2 = v3 - v4
+aux04 = v2
+v5 = this
+aux01 = v5
+v6 = this
+prev = v6
+v8 = 16
+v9 = 4
+v8 = v8 + v9
+v10 = this + v8
+v7 = [v10 + 0]
+var_end = v7
+v12 = 0
+v13 = 4
+v12 = v12 + v13
+v14 = this + v12
+v11 = [v14 + 0]
+var_elem = v11
+while15:
+v18 = var_end
+if0 v18 goto if_else_19
+v17 = 0
+goto if_end_20
+if_else_19:
+v17 = 1
+if_end_20:
+v22 = ret_val
+if0 v22 goto if_else_23
+v21 = 0
+goto if_end_24
+if_else_23:
+v21 = 1
+if_end_24:
+v16 = v17 * v21
+if0 v16 goto break_while_25
+v27 = e
+vmt_address28 = [v27 + 0]
+f29 = [vmt_address28 + 16]
+v30 = var_elem
+v26 = call f29(v27 v30)
+if0 v26 goto if_else_31
+v32 = 1
+ret_val = v32
+v34 = aux04
+v35 = 0
+v33 = v34 < v35
+if0 v33 goto if_else_36
+v38 = aux01
+vmt_address39 = [v38 + 0]
+f40 = [vmt_address39 + 32]
+v37 = call f40(v38)
+my_head = v37
+goto if_end_41
+if_else_36:
+v43 = 0
+v44 = 555
+v42 = v43 - v44
+print(v42)
+v46 = prev
+vmt_address47 = [v46 + 0]
+f48 = [vmt_address47 + 12]
+v50 = aux01
+vmt_address51 = [v50 + 0]
+f52 = [vmt_address51 + 32]
+v49 = call f52(v50)
+v45 = call f48(v46 v49)
+aux05 = v45
+v54 = 0
+v55 = 555
+v53 = v54 - v55
+print(v53)
+if_end_41:
+goto if_end_56
+if_else_31:
+v57 = 0
+nt = v57
+if_end_56:
+v59 = ret_val
+if0 v59 goto if_else_60
+v58 = 0
+goto if_end_61
+if_else_60:
+v58 = 1
+if_end_61:
+if0 v58 goto if_else_62
+v63 = aux01
+prev = v63
+v65 = aux01
+vmt_address66 = [v65 + 0]
+f67 = [vmt_address66 + 32]
+v64 = call f67(v65)
+aux01 = v64
+v69 = aux01
+vmt_address70 = [v69 + 0]
+f71 = [vmt_address70 + 24]
+v68 = call f71(v69)
+var_end = v68
+v73 = aux01
+vmt_address74 = [v73 + 0]
+f75 = [vmt_address74 + 28]
+v72 = call f75(v73)
+var_elem = v72
+v76 = 1
+aux04 = v76
+goto if_end_77
+if_else_62:
+v78 = 0
+nt = v78
+if_end_77:
+goto while15
+break_while_25:
+v79 = my_head
+      return v79
+
+func List_Search(this e)
+v0 = 0
+int_ret_val = v0
+v1 = this
+aux01 = v1
+v3 = 16
+v4 = 4
+v3 = v3 + v4
+v5 = this + v3
+v2 = [v5 + 0]
+var_end = v2
+v7 = 0
+v8 = 4
+v7 = v7 + v8
+v9 = this + v7
+v6 = [v9 + 0]
+var_elem = v6
+while10:
+v12 = var_end
+if0 v12 goto if_else_13
+v11 = 0
+goto if_end_14
+if_else_13:
+v11 = 1
+if_end_14:
+if0 v11 goto break_while_15
+v17 = e
+vmt_address18 = [v17 + 0]
+f19 = [vmt_address18 + 16]
+v20 = var_elem
+v16 = call f19(v17 v20)
+if0 v16 goto if_else_21
+v22 = 1
+int_ret_val = v22
+goto if_end_23
+if_else_21:
+v24 = 0
+nt = v24
+if_end_23:
+v26 = aux01
+vmt_address27 = [v26 + 0]
+f28 = [vmt_address27 + 32]
+v25 = call f28(v26)
+aux01 = v25
+v30 = aux01
+vmt_address31 = [v30 + 0]
+f32 = [vmt_address31 + 24]
+v29 = call f32(v30)
+var_end = v29
+v34 = aux01
+vmt_address35 = [v34 + 0]
+f36 = [vmt_address35 + 28]
+v33 = call f36(v34)
+var_elem = v33
+goto while10
+break_while_15:
+v37 = int_ret_val
+      return v37
+
+func List_GetEnd(this)
+v1 = 16
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func List_GetElem(this)
+v1 = 0
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func List_GetNext(this)
+v1 = 8
+v2 = 4
+v1 = v1 + v2
+v3 = this + v1
+v0 = [v3 + 0]
+      return v0
+
+func List_Print(this)
+v0 = this
+aux01 = v0
+v2 = 16
+v3 = 4
+v2 = v2 + v3
+v4 = this + v2
+v1 = [v4 + 0]
+var_end = v1
+v6 = 0
+v7 = 4
+v6 = v6 + v7
+v8 = this + v6
+v5 = [v8 + 0]
+var_elem = v5
+while9:
+v11 = var_end
+if0 v11 goto if_else_12
+v10 = 0
+goto if_end_13
+if_else_12:
+v10 = 1
+if_end_13:
+if0 v10 goto break_while_14
+v16 = var_elem
+vmt_address17 = [v16 + 0]
+f18 = [vmt_address17 + 4]
+v15 = call f18(v16)
+print(v15)
+v20 = aux01
+vmt_address21 = [v20 + 0]
+f22 = [vmt_address21 + 32]
+v19 = call f22(v20)
+aux01 = v19
+v24 = aux01
+vmt_address25 = [v24 + 0]
+f26 = [vmt_address25 + 24]
+v23 = call f26(v24)
+var_end = v23
+v28 = aux01
+vmt_address29 = [v28 + 0]
+f30 = [vmt_address29 + 28]
+v27 = call f30(v28)
+var_elem = v27
+goto while9
+break_while_14:
+v31 = 1
+      return v31
+
+func LL_Start(this)
+v1 = 28
+v2 = 40
+v0 = alloc(v1)
+vmt_address3 = alloc(v2)
+[v0 + 0] = vmt_address3
+f4 = @List_Delete
+[vmt_address3 + 16] = f4
+f5 = @List_Print
+[vmt_address3 + 36] = f5
+f6 = @List_Init
+[vmt_address3 + 0] = f6
+f7 = @List_GetElem
+[vmt_address3 + 28] = f7
+f8 = @List_GetNext
+[vmt_address3 + 32] = f8
+f9 = @List_SetNext
+[vmt_address3 + 12] = f9
+f10 = @List_Search
+[vmt_address3 + 20] = f10
+f11 = @List_GetEnd
+[vmt_address3 + 24] = f11
+f12 = @List_InitNew
+[vmt_address3 + 4] = f12
+f13 = @List_Insert
+[vmt_address3 + 8] = f13
+last_elem = v0
+v15 = last_elem
+vmt_address16 = [v15 + 0]
+f17 = [vmt_address16 + 0]
+v14 = call f17(v15)
+aux01 = v14
+v18 = last_elem
+head = v18
+v20 = head
+vmt_address21 = [v20 + 0]
+f22 = [vmt_address21 + 0]
+v19 = call f22(v20)
+aux01 = v19
+v24 = head
+vmt_address25 = [v24 + 0]
+f26 = [vmt_address25 + 36]
+v23 = call f26(v24)
+aux01 = v23
+v28 = 28
+v29 = 24
+v27 = alloc(v28)
+vmt_address30 = alloc(v29)
+[v27 + 0] = vmt_address30
+f31 = @Element_GetSalary
+[vmt_address30 + 8] = f31
+f32 = @Element_Init
+[vmt_address30 + 0] = f32
+f33 = @Element_GetAge
+[vmt_address30 + 4] = f33
+f34 = @Element_Equal
+[vmt_address30 + 16] = f34
+f35 = @Element_GetMarried
+[vmt_address30 + 12] = f35
+f36 = @Element_Compare
+[vmt_address30 + 20] = f36
+el01 = v27
+v38 = el01
+vmt_address39 = [v38 + 0]
+f40 = [vmt_address39 + 0]
+v41 = 25
+v42 = 37000
+v43 = 0
+v37 = call f40(v38 v41 v42 v43)
+aux01 = v37
+v45 = head
+vmt_address46 = [v45 + 0]
+f47 = [vmt_address46 + 8]
+v48 = el01
+v44 = call f47(v45 v48)
+head = v44
+v50 = head
+vmt_address51 = [v50 + 0]
+f52 = [vmt_address51 + 36]
+v49 = call f52(v50)
+aux01 = v49
+v53 = 10000000
+print(v53)
+v55 = 28
+v56 = 24
+v54 = alloc(v55)
+vmt_address57 = alloc(v56)
+[v54 + 0] = vmt_address57
+f58 = @Element_GetSalary
+[vmt_address57 + 8] = f58
+f59 = @Element_Init
+[vmt_address57 + 0] = f59
+f60 = @Element_GetAge
+[vmt_address57 + 4] = f60
+f61 = @Element_Equal
+[vmt_address57 + 16] = f61
+f62 = @Element_GetMarried
+[vmt_address57 + 12] = f62
+f63 = @Element_Compare
+[vmt_address57 + 20] = f63
+el01 = v54
+v65 = el01
+vmt_address66 = [v65 + 0]
+f67 = [vmt_address66 + 0]
+v68 = 39
+v69 = 42000
+v70 = 1
+v64 = call f67(v65 v68 v69 v70)
+aux01 = v64
+v71 = el01
+el02 = v71
+v73 = head
+vmt_address74 = [v73 + 0]
+f75 = [vmt_address74 + 8]
+v76 = el01
+v72 = call f75(v73 v76)
+head = v72
+v78 = head
+vmt_address79 = [v78 + 0]
+f80 = [vmt_address79 + 36]
+v77 = call f80(v78)
+aux01 = v77
+v81 = 10000000
+print(v81)
+v83 = 28
+v84 = 24
+v82 = alloc(v83)
+vmt_address85 = alloc(v84)
+[v82 + 0] = vmt_address85
+f86 = @Element_GetSalary
+[vmt_address85 + 8] = f86
+f87 = @Element_Init
+[vmt_address85 + 0] = f87
+f88 = @Element_GetAge
+[vmt_address85 + 4] = f88
+f89 = @Element_Equal
+[vmt_address85 + 16] = f89
+f90 = @Element_GetMarried
+[vmt_address85 + 12] = f90
+f91 = @Element_Compare
+[vmt_address85 + 20] = f91
+el01 = v82
+v93 = el01
+vmt_address94 = [v93 + 0]
+f95 = [vmt_address94 + 0]
+v96 = 22
+v97 = 34000
+v98 = 0
+v92 = call f95(v93 v96 v97 v98)
+aux01 = v92
+v100 = head
+vmt_address101 = [v100 + 0]
+f102 = [vmt_address101 + 8]
+v103 = el01
+v99 = call f102(v100 v103)
+head = v99
+v105 = head
+vmt_address106 = [v105 + 0]
+f107 = [vmt_address106 + 36]
+v104 = call f107(v105)
+aux01 = v104
+v109 = 28
+v110 = 24
+v108 = alloc(v109)
+vmt_address111 = alloc(v110)
+[v108 + 0] = vmt_address111
+f112 = @Element_GetSalary
+[vmt_address111 + 8] = f112
+f113 = @Element_Init
+[vmt_address111 + 0] = f113
+f114 = @Element_GetAge
+[vmt_address111 + 4] = f114
+f115 = @Element_Equal
+[vmt_address111 + 16] = f115
+f116 = @Element_GetMarried
+[vmt_address111 + 12] = f116
+f117 = @Element_Compare
+[vmt_address111 + 20] = f117
+el03 = v108
+v119 = el03
+vmt_address120 = [v119 + 0]
+f121 = [vmt_address120 + 0]
+v122 = 27
+v123 = 34000
+v124 = 0
+v118 = call f121(v119 v122 v123 v124)
+aux01 = v118
+v126 = head
+vmt_address127 = [v126 + 0]
+f128 = [vmt_address127 + 20]
+v129 = el02
+v125 = call f128(v126 v129)
+print(v125)
+v131 = head
+vmt_address132 = [v131 + 0]
+f133 = [vmt_address132 + 20]
+v134 = el03
+v130 = call f133(v131 v134)
+print(v130)
+v135 = 10000000
+print(v135)
+v137 = 28
+v138 = 24
+v136 = alloc(v137)
+vmt_address139 = alloc(v138)
+[v136 + 0] = vmt_address139
+f140 = @Element_GetSalary
+[vmt_address139 + 8] = f140
+f141 = @Element_Init
+[vmt_address139 + 0] = f141
+f142 = @Element_GetAge
+[vmt_address139 + 4] = f142
+f143 = @Element_Equal
+[vmt_address139 + 16] = f143
+f144 = @Element_GetMarried
+[vmt_address139 + 12] = f144
+f145 = @Element_Compare
+[vmt_address139 + 20] = f145
+el01 = v136
+v147 = el01
+vmt_address148 = [v147 + 0]
+f149 = [vmt_address148 + 0]
+v150 = 28
+v151 = 35000
+v152 = 0
+v146 = call f149(v147 v150 v151 v152)
+aux01 = v146
+v154 = head
+vmt_address155 = [v154 + 0]
+f156 = [vmt_address155 + 8]
+v157 = el01
+v153 = call f156(v154 v157)
+head = v153
+v159 = head
+vmt_address160 = [v159 + 0]
+f161 = [vmt_address160 + 36]
+v158 = call f161(v159)
+aux01 = v158
+v162 = 2220000
+print(v162)
+v164 = head
+vmt_address165 = [v164 + 0]
+f166 = [vmt_address165 + 16]
+v167 = el02
+v163 = call f166(v164 v167)
+head = v163
+v169 = head
+vmt_address170 = [v169 + 0]
+f171 = [vmt_address170 + 36]
+v168 = call f171(v169)
+aux01 = v168
+v172 = 33300000
+print(v172)
+v174 = head
+vmt_address175 = [v174 + 0]
+f176 = [vmt_address175 + 16]
+v177 = el01
+v173 = call f176(v174 v177)
+head = v173
+v179 = head
+vmt_address180 = [v179 + 0]
+f181 = [vmt_address180 + 36]
+v178 = call f181(v179)
+aux01 = v178
+v182 = 44440000
+print(v182)
+v183 = 0
+      return v183
+
+

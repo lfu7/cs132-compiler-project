@@ -1,0 +1,158 @@
+.equiv @sbrk, 9
+.equiv @print_string, 4
+.equiv @print_char, 11
+.equiv @print_int, 1
+.equiv @exit 10
+.equiv @exit2, 17
+
+.text
+jal Main
+li a0, @exit
+ecall
+
+.globl Main
+Main:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 28
+sub sp, sp, t6
+sw ra, -4(fp)
+li t0, 4
+sw t0, -12(fp)
+lw t1, -12(fp)
+mv a0, t1
+jal alloc
+mv t0, a0
+sw t0, -16(fp)
+lw t1, -12(fp)
+mv a0, t1
+jal alloc
+mv t3, a0
+la t0, FacComputeFac
+sw t0, -12(fp)
+lw t1, -12(fp)
+sw t1, 0(t3)
+sw t3, -12(fp)
+lw t0, -16(fp)
+lw t1, -12(fp)
+sw t1, 0(t0)
+lw t1, -16(fp)
+bne t1, zero ,Main_end_0
+j Main_null1
+Main_end_0:
+lw t1, -16(fp)
+lw t4, 0(t1)
+lw t4, 0(t4)
+li t0, 6
+sw t0, -12(fp)
+sw t3, -20(fp)
+sw t4, -24(fp)
+sw t5, -28(fp)
+lw t0, -16(fp)
+mv a2, t0
+lw t0, -12(fp)
+mv a3, t0
+jalr t4
+mv t0, a0
+lw t4, -24(fp)
+lw t5, -28(fp)
+lw t3, -20(fp)
+mv t5, t0
+mv a1, t5
+li a0, @print_int
+ecall
+li a1, 10
+li a0, 11
+ecall
+j Main_main_end
+Main_null1:
+la a0, msg_0
+j error
+Main_main_end:
+lw a0, -12(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 28
+jr ra
+
+.globl FacComputeFac
+FacComputeFac:
+sw fp, -8(sp)
+mv fp, sp
+li t6, 40
+sub sp, sp, t6
+sw ra, -4(fp)
+sw s1, -12(fp)
+li t3, 1
+slt t4, a3, t3
+bne t4, zero ,FacComputeFac_end_1
+j FacComputeFac_if1_else
+FacComputeFac_end_1:
+li t0, 1
+sw t0, -16(fp)
+j FacComputeFac_if1_end
+FacComputeFac_if1_else:
+lw t5, 0(a2)
+lw t5, 0(t5)
+li t3, 1
+sub t0, a3, t3
+sw t0, -20(fp)
+sw t3, -24(fp)
+sw t4, -28(fp)
+sw t5, -32(fp)
+sw a2, -36(fp)
+sw a3, -40(fp)
+lw t0, -36(fp)
+mv a2, t0
+lw t0, -20(fp)
+mv a3, t0
+jalr t5
+mv t0, a0
+lw t4, -28(fp)
+lw t5, -32(fp)
+lw a2, -36(fp)
+lw a3, -40(fp)
+lw t3, -24(fp)
+mv s1, t0
+mul t0, a3, s1
+sw t0, -16(fp)
+FacComputeFac_if1_end:
+lw s1, -12(fp)
+lw a0, -16(fp)
+lw ra, -4(fp)
+lw fp, -8(fp)
+addi sp, sp, 40
+jr ra
+
+.globl error
+error:
+mv a1, a0                                # Move msg address to a1
+li a0, @print_string                     # Code for print_string ecall
+ecall # Print error message in a1
+li a1, 10                                # Load newline character
+li a0, @print_char                       # Code for print_char ecall
+ecall                                    # Print newline
+li a0, @exit                             # Code for exit ecall
+ecall                                    # Exit with code
+abort_17:                                  # Infinite loop
+j abort_17                               # Prevent fallthrough
+
+.globl alloc
+alloc:
+mv a1, a0                                # Move requested size to a1
+li a0, @sbrk                             # Code for ecall: sbrk
+ecall                                    # Request a1 bytes
+jr ra                                    # Return to caller
+
+.data
+
+.globl msg_0
+msg_0:
+.asciiz "null pointer"
+.align 2
+
+.globl msg_1
+msg_1:
+.asciiz "array index out of bounds"
+.align 2
+
